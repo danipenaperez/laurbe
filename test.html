@@ -15,6 +15,23 @@
   	<div id="navBarContainer"></div>
 
 	<div id="navBarContainer2"></div>
+
+
+<select>
+	<div id="antonio">
+		<option>casa</option>
+	</div>
+	<div id="antonio2">
+		<option>casa2</option>
+	</div>
+	
+	<option>mesa</option>
+	<option>silla</option>
+	<option>barco</option>
+
+
+</select>
+
 	
 	
 	<!-- Latest compiled and minified CSS -->
@@ -38,8 +55,9 @@
     
     <script type="text/javascript">
 	    $( document ).ready(function() {
-	        console.log( "ready!" );
-	        var menu = new laurbe.navBar({	renderTo:'navBarContainer', 
+	        
+	        var menu = new laurbe.navBar({	
+	        								renderTo:'navBarContainer', 
 	        								title:'hola',
 	        								prop:'soy el 1',
 	        								items: [
@@ -55,22 +73,29 @@
 	        								]
 	        });
 	        
-	        menu.init();
-	        menu.render();
-	        console.log(menu);
+
+	        //console.log(menu.getName());
+	        
 	        
 	        var menu2 = new laurbe.navBar({	
-	        	renderTo:'navBarContainer2', 
-							title:'Hellow',
-							items: [
-								
-							]
+					        				renderTo:'navBarContainer2', 
+											title:'Hellow',
+											items: [
+												
+											]
 			});
-			
+			//console.log(menu2.getName());
+
+			menu.init();
 			menu2.init();
-			menu2.render();
-			console.log(menu2);
-	        
+
+			menu.toString();
+	        menu2.toString();
+
+
+	        menu.render();
+	        menu2.render();
+
 	    });
     </script> 
   </body>

@@ -8,38 +8,12 @@
  * 		
  * }
  */
-laurbe.prototype.navBar = $.extend({}, laurbe.viewElement, {
+laurbe.prototype.navBar = $.extend({}, laurbe.BaseViewElement, {
 	
-	
-	
-	/**
-	 * Initialization method
-	 */
-	init : function(){
-		this.id = laurbe.utils.getIdFor('navBar');
-		this.ele = $('#'+this.renderTo);/** Wrapper reference object **/
-		return this;
-	},
-	
+	template: {
+				scriptId : "navbarWrapperTemplate",
+				url: "./html/components/navbar/wrapperTemplate.html"
 
-	
-	/**
-	 * Render the element
-	 */
-	render: function(){
-		$('#'+this.renderTo).load("./html/components/navbar/wrapperTemplate.html", this.afterload );
-	},
-	
-	afterload:function(){
-		//console.log('y ele es ');
-		//console.log(this);
-		$('#navbarWrapperTemplate').tmpl(this).appendTo(this);
-	},
-	
-	
-	
-	onclickMenuElement:function(){
-		
 	}
 
 });
@@ -53,8 +27,10 @@ laurbe.navBar = function NavBar(args){
 	//console.log('esta entrando '+ args.renderTo);
 	/** Init values for laurbe.navBar **/
 	var navBarDefaults = {
+			id : laurbe.utils.getIdFor('navBar'),
 			title:'defaultTitle',
-			items: [],
+			items: []
+
 	};
 	
 	/** Extends Defautls with args constructor **/
@@ -63,10 +39,10 @@ laurbe.navBar = function NavBar(args){
 	//console.log(initializationProps);
 	
 	/** Return the instance **/
-	var instance = $.extend({}, laurbe.prototype.navBar, initializationProps);
-	var instance = instance.init();
-	//console.log('finalmente es  ');
-	//console.log(instance);
+	var instance = $.extend({}, laurbe.prototype.navBar, {instanceProperties:initializationProps});
+	//var instance = instance.init();
+	console.log('finalmente es  ');
+	console.log(instance);
 	/** Initialize object and return **/
 	return instance;
 }
