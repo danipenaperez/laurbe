@@ -8,18 +8,15 @@
  * 		
  * }
  */
-laurbe.prototype.navBar = $.extend({}, laurbe.BaseViewElement, {
-	/**
+laurbe.prototype.navBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
+		/**
 	* String type definition
 	**/
-	type: 'laurbe.prototype.navBar',
+	type: 'laurbe.prototype.navBarMenuItem',
 	template: {
-				scriptId : "navbarWrapperTemplate",
-				url: "./html/components/navbar/wrapperTemplate.html"
+				scriptId : "navbarMenuItemTemplate",
+				url: "./html/components/navbar/navBarMenuItemTemplate.html"
 
-	},
-	getRenderChildElementsToId:function(){
-		return 'navBar_'+this.instanceProperties.id+'_elements';
 	}
 
 });
@@ -28,24 +25,24 @@ laurbe.prototype.navBar = $.extend({}, laurbe.BaseViewElement, {
 /**
  * Constructor definition
  */
-laurbe.navBar = function NavBar(args){
+laurbe.navBarMenuItem = function navBarMenuItem(args){
 	
 	//console.log('esta entrando '+ args.renderTo);
 	/** Init values for laurbe.navBar **/
-	var navBarDefaults = {
-			id : laurbe.utils.getIdFor('navBar'),
-			title:'defaultTitle',
-			items: []
+	var defaults = {
+			id : laurbe.utils.getIdFor('navBarMenuItem'),
+			text:'Option',
+			selected: true
 
 	};
 	
 	/** Extends Defautls with args constructor **/
-	var initializationProps = $.extend({}, navBarDefaults, args);
+	var initializationProps = $.extend({}, defaults, args);
 	//console.log('las propiedades de inicializacioon son ');
 	//console.log(initializationProps);
 	
 	/** Return the instance **/
-	var instance = $.extend({}, laurbe.prototype.navBar, {instanceProperties:initializationProps});
+	var instance = $.extend({}, laurbe.prototype.navBarMenuItem, {instanceProperties:initializationProps});
 	//var instance = instance.init();
 	//console.log('finalmente es  ');
 	//console.log(instance);

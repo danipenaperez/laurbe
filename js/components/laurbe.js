@@ -1,11 +1,25 @@
 /**
  * Main object namespace
+
+ $('<div/>', {
+    'id':'myDiv',
+    'class':'myClass',
+    'style':'cursor:pointer;font-weight:bold;',
+    'html':'<span>For HTML</span>',
+    'click':function(){ alert(this.id) },
+    'mouseenter':function(){ $(this).css('color', 'red'); },
+    'mouseleave':function(){ $(this).css('color', 'black'); }
+}).appendTo('body');
  */
 var laurbe ={
 		/**
 		 * Base view element 
 		 */
 		BaseViewElement:{
+			/**
+			* String type definition
+			**/
+			type: 'laurbe.BaseViewElement',
 			/**
 			 * Current element Id
 			 */
@@ -38,31 +52,50 @@ var laurbe ={
 				this.fatherElement = $('#'+this.instanceProperties.renderTo);
 				this.ele = $('<div/>', { 
 													 'id':this.id,
-													 'html':'<span> soy el '+this.id+'</span>'
+													 'click':function(){ alert(this.id) }
+													 //,
+													 //'html':'<span> soy el '+this.id+'</span>'
 										 			}
 										 );
 				this.ele.appendTo(this.fatherElement);
-				
 			},
 			/**
-			* Template management
+			* If the component is based on template building
 			**/
 			template: null,
 
 			
 			render: function(){
 				if(this.template){
-					alert('renderizando');
-					var templateInfo = {appendTo: this.ele, data: this.instanceProperties};
+					var self = this;
+					var templateInfo = {appendTo: self.ele, data: self.instanceProperties};
 					//always load to templateManager div container
-					$('#templateManager').load(this.template.url, function(templateString,  ajaxObject, ajaxState){
+					$('#templateManager').load(self.template.url, function(templateString,  ajaxObject, ajaxState){
 						//this == $('#templateManager') lost main scope execution :-(
-						$('#navbarWrapperTemplate').tmpl(templateInfo.data).appendTo(templateInfo.appendTo);
+						$('#'+self.template.scriptId).tmpl(templateInfo.data).appendTo(templateInfo.appendTo);
+						self.afterRender();
 					});
 				}
 			},
-
-
+			/**
+			* After render callback
+			**/
+			afterRender:function(){
+				var self = this;
+				if(this.instanceProperties.items){
+					$.each(this.instanceProperties.items, function( index, item ) {
+					  	item.instanceProperties.renderTo = self.getRenderChildElementsToId();
+					  	item.init();
+					  	item.render();
+					});
+				}
+			},
+			/**
+			* Where to render child elements
+			**/
+			getRenderChildElementsToId:function(){
+				console.log('this component not allows child objects');
+			},
 			/**
 			* To string log traces
 			**/

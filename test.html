@@ -51,50 +51,41 @@
     <!-- laurbe -->
     <script type="text/javascript" src="./js/components/laurbe.js"></script>
     <script type="text/javascript" src="./js/components/navbar.js"></script>
+    <script type="text/javascript" src="./js/components/navbarMenuItem.js"></script>
     
     
     <script type="text/javascript">
 	    $( document ).ready(function() {
 	        
-	        var menu = new laurbe.navBar({	
-	        								renderTo:'navBarContainer', 
-	        								title:'hola',
-	        								prop:'soy el 1',
-	        								items: [
-	        									{
-	        										text: 'Tenant'
-	        									},
-	        									{
-	        										text: 'Prototypes'
-	        									},
-	        									{
-	        										text: 'Models'
-	        									}
-	        								]
-	        });
+	      
 	        
 
-	        //console.log(menu.getName());
 	        
 	        
 	        var menu2 = new laurbe.navBar({	
 					        				renderTo:'navBarContainer2', 
 											title:'Hellow',
 											items: [
-												
+												new laurbe.navBarMenuItem({
+													id : 'menuitem1',
+													text:'OptionOne',
+													selected: true
+												}),
+												new laurbe.navBarMenuItem({
+													id : 'menuitem2',
+													text:'Option Dos',
+													selected: false
+												}),
+												new laurbe.navBarMenuItem({
+													id : 'menuitem3',
+													text:'Option Tres',
+													selected: false
+												})
 											]
 			});
-			//console.log(menu2.getName());
-
-			menu.init();
 			menu2.init();
-
-			menu.toString();
-	        menu2.toString();
-
-
-	        menu.render();
-	        menu2.render();
+			
+		    menu2.render();
 
 	    });
     </script> 
