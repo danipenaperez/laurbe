@@ -50,9 +50,11 @@ var laurbe ={
 			init: function(){
 				this.id = this.instanceProperties.id || laurbe.utils.getIdFor('navBar');
 				this.fatherElement = $('#'+this.instanceProperties.renderTo);
+				
 				this.ele = $('<div/>', { 
-													 'id':this.id,
-													 'click':function(){ alert(this.id) }
+													 'id':this.id
+
+													 ,'click':function(){ alert(this.id) }
 													 //,
 													 //'html':'<span> soy el '+this.id+'</span>'
 										 			}
