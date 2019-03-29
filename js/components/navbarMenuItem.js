@@ -1,23 +1,54 @@
 /**
- * input 
- * {
- * 		#container element Id
- * 		renderTo:
- * 		#title to show
- * 		title:string
- * 		
- * }
+ * The menu item prototype
  */
-laurbe.prototype.navBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
-		/**
+laurbe.prototype.NavBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
+	/**
 	* String type definition
 	**/
-	type: 'laurbe.prototype.navBarMenuItem',
+	type: 'navBarMenuItem',
+	/**
+	* The laurbe owner element
+	**/
+	owner:null,
+	/**
+	* This object is from template, so this is the template info
+	**/
 	template: {
 				scriptId : "navbarMenuItemTemplate",
-				url: "./html/components/navbar/navBarMenuItemTemplate.html"
+				url: './html/components/navBar/navBarMenuItemTemplate.html'
+	},
+	onclickHandler: function(ev){
+		alert('soy item y me han pulsado');
+		console.log(this);
+		var currentObject = laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')];
+		if(currentObject.instanceProperties.onclick){
+			currentObject.instanceProperties.onclick(ev);
+		}else{
+			console.log('no hay event definido para '+currentObject.id);
+		}
 
-	}
+		//up the notification
+		if(currentObject.owner){
+			currentObject.owner.onChildItemEvent(ev, ev, currentObject);
+		}
+
+		
+
+	},
+	onItemClicked:function (menuItem){
+		console.log(menuItem.id+ ' me avisa que le han clickado ');
+		console.log(this.instanceProperties.items);
+	},
+	/**
+	* Mark this item as active render
+	**/
+	setActive:function(isActive){
+		if(isActive){
+			$('#'+this.id).addClass('active');
+		}else{
+			$('#'+this.id).removeClass('active');
+		}
+	}	
 
 });
 
@@ -25,27 +56,23 @@ laurbe.prototype.navBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
 /**
  * Constructor definition
  */
-laurbe.navBarMenuItem = function navBarMenuItem(args){
+laurbe.NavBarMenuItem = function navBarMenuItem(args){
 	
-	//console.log('esta entrando '+ args.renderTo);
 	/** Init values for laurbe.navBar **/
 	var defaults = {
-			id : laurbe.utils.getIdFor('navBarMenuItem'),
 			text:'Option',
 			selected: true
-
 	};
 	
 	/** Extends Defautls with args constructor **/
 	var initializationProps = $.extend({}, defaults, args);
-	//console.log('las propiedades de inicializacioon son ');
-	//console.log(initializationProps);
-	
+
+	/**Sitio Id **/
+	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.NavBarMenuItem.type) ;
+
 	/** Return the instance **/
-	var instance = $.extend({}, laurbe.prototype.navBarMenuItem, {instanceProperties:initializationProps});
-	//var instance = instance.init();
-	//console.log('finalmente es  ');
-	//console.log(instance);
-	/** Initialize object and return **/
+	var instance = $.extend({}, laurbe.prototype.NavBarMenuItem, {instanceProperties:initializationProps});
+
+
 	return instance;
 }

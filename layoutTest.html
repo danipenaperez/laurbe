@@ -11,30 +11,8 @@
     <title>Hello, world!</title>
   </head>
   <body>
-  	<!-- NAVBAR -->
-  	<div id="navBarContainer"></div>
 
-	<div id="navBarContainer2"></div>
-
-
-<select>
-	<div id="antonio">
-		<option>casa</option>
-	</div>
-	<div id="antonio2">
-		<option>casa2</option>
-	</div>
-	
-	<option>mesa</option>
-	<option>silla</option>
-	<option>barco</option>
-
-
-</select>
-
-	
-	
-	<!-- Latest compiled and minified CSS -->
+  	<div id="layoutWaa"></div>
 	
 	
 	<!-- jQuery library -->
@@ -50,6 +28,9 @@
     
     <!-- laurbe -->
     <script type="text/javascript" src="./js/components/laurbe.js"></script>
+    <script type="text/javascript" src="./js/components/layout.js"></script>
+    <script type="text/javascript" src="./js/components/region.js"></script>
+
     <script type="text/javascript" src="./js/components/navbar.js"></script>
     <script type="text/javascript" src="./js/components/navbarMenuItem.js"></script>
     
@@ -57,10 +38,8 @@
     <script type="text/javascript">
 	    $( document ).ready(function() {
 	        
-
-
-	        var menu2 = new laurbe.NavBar({	
-					        				renderTo:'navBarContainer2', 
+var menu2 = new laurbe.NavBar({	
+					        				
 											title:'Hellow',
 											items: [
 												new laurbe.NavBarMenuItem({
@@ -84,9 +63,31 @@
 												})
 											]
 			});
-			//menu2.init();
-			
-		    menu2.render();
+
+
+
+
+	    	var layout = new laurbe.Layout({
+	    		renderTo:'layoutWaa',
+	    		items: [
+					new laurbe.Region({
+						//id : 'menuitem1',
+						text:'Region1',
+						items:[
+							menu2
+						]
+					}),
+					new laurbe.Region({
+						text:'Region2'
+					}),
+					new laurbe.Region({
+						text:'Region3'
+					})
+				]
+	    	});
+
+	        
+		    layout.render();
 
 	    });
     </script> 

@@ -12,6 +12,20 @@
 }).appendTo('body');
  */
 var laurbe ={
+		logger: {
+			enabled:false,
+			log:function(obj){
+				if(enabled){
+					console.log(obj);
+				}
+			}
+		},
+		/**
+		 * Reference for all created elements
+		 */
+		Directory:{
+
+		},
 		/**
 		 * Base view element 
 		 */
@@ -19,7 +33,7 @@ var laurbe ={
 			/**
 			* String type definition
 			**/
-			type: 'laurbe.BaseViewElement',
+			type: 'laurbeBaseViewElement',
 			/**
 			 * Current element Id
 			 */
@@ -32,6 +46,10 @@ var laurbe ={
 			 * InstanceProperties
 			 */
 			instanceProperties:null,
+			/**
+			* flag for initialization of current Object
+			**/
+			initialized:false,
 			/**
 			* Returns the id
 			**/
@@ -48,18 +66,19 @@ var laurbe ={
 			* initialize the wrapper
 			**/
 			init: function(){
-				this.id = this.instanceProperties.id || laurbe.utils.getIdFor('navBar');
+				this.id = this.instanceProperties.id;
+				laurbe.Directory[this.id] = this;
 				this.fatherElement = $('#'+this.instanceProperties.renderTo);
-				
 				this.ele = $('<div/>', { 
-													 'id':this.id
+										 'id':this.id+'Wrapper'
 
-													 ,'click':function(){ alert(this.id) }
-													 //,
-													 //'html':'<span> soy el '+this.id+'</span>'
-										 			}
-										 );
+										 ,'click': this.onclickHandler
+										 //,
+										 //'html':'<span> soy el '+this.id+'</span>'
+							 			});
 				this.ele.appendTo(this.fatherElement);
+				//this.bindEvents();
+				this.initialized = true;
 			},
 			/**
 			* If the component is based on template building
@@ -68,12 +87,14 @@ var laurbe ={
 
 			
 			render: function(){
+				if(!this.initialized){
+			  		this.init();
+			  	}
 				if(this.template){
 					var self = this;
 					var templateInfo = {appendTo: self.ele, data: self.instanceProperties};
 					//always load to templateManager div container
 					$('#templateManager').load(self.template.url, function(templateString,  ajaxObject, ajaxState){
-						//this == $('#templateManager') lost main scope execution :-(
 						$('#'+self.template.scriptId).tmpl(templateInfo.data).appendTo(templateInfo.appendTo);
 						self.afterRender();
 					});
@@ -83,11 +104,13 @@ var laurbe ={
 			* After render callback
 			**/
 			afterRender:function(){
+				//bindEvents();
 				var self = this;
-				if(this.instanceProperties.items){
-					$.each(this.instanceProperties.items, function( index, item ) {
-					  	item.instanceProperties.renderTo = self.getRenderChildElementsToId();
-					  	item.init();
+				//self.bindEvents();
+				if(self.instanceProperties.items){
+					$.each(self.instanceProperties.items, function( index, item ) {
+						item.owner = self;//reference to parent laurbe object
+					  	item.instanceProperties.renderTo = self.getRenderChildWrapperId();
 					  	item.render();
 					});
 				}
@@ -95,8 +118,22 @@ var laurbe ={
 			/**
 			* Where to render child elements
 			**/
-			getRenderChildElementsToId:function(){
+			getRenderChildWrapperId:function(){
 				console.log('this component not allows child objects');
+			},
+			/**
+			* default onclick framework handlers
+			**/
+			onclickHandler: function(ev){
+				
+				if(true){
+					console.log('el evento es');
+					console.log(ev);
+					console.log(' y el elemento es');
+					console.log(this);
+					console.log('y el laurbe element es ');
+					console.log(laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')]);
+				}
 			},
 			/**
 			* To string log traces
@@ -105,7 +142,6 @@ var laurbe ={
 				console.log('-----------------------');
 				console.log('instanceProperties');
 				console.log(this.instanceProperties);
-				
 				console.log('this.ele');
 				console.log(this.ele);
 				console.log('this.fatherElement');
@@ -135,9 +171,9 @@ var laurbe ={
 			/**
 			 * Return a generated unique sequencial string
 			 */
-			getIdFor:function(){
+			getIdFor:function(prefix){
 				this.id++;
-				return this.id;
+				return prefix + this.id;
 			}
 		},
 
