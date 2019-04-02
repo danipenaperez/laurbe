@@ -66,6 +66,9 @@ laurbe.NavBar = function NavBar(args){
 	/** Init values for laurbe.navBar **/
 	var navBarDefaults = {
 			title:'defaultTitle',
+			wrapper:{
+				tag:'<div>'
+			},
 			items: []
 	};
 	

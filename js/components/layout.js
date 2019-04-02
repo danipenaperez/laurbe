@@ -35,6 +35,10 @@ laurbe.Layout = function Layout(args){
 	
 	/** Init values for laurbe.navBar **/
 	var defaults = {
+			wrapper:{
+				tag:'<div>',
+				class:'mt-1' //Spacing tòp 1
+			},
 			text:'Option',
 			selected: true
 	};

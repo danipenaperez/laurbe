@@ -1,11 +1,11 @@
 /**
  * The menu item prototype
  */
-laurbe.prototype.NavBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
+laurbe.prototype.Image = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* String type definition
 	**/
-	type: 'navBarMenuItem',
+	type: 'image',
 	/**
 	* The laurbe owner element
 	**/
@@ -14,11 +14,11 @@ laurbe.prototype.NavBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
 	* This object is from template, so this is the template info
 	**/
 	template: {
-				scriptId : "navbarMenuItemTemplate",
-				url: './html/components/navBar/navBarMenuItemTemplate.html'
+				scriptId : "imageTemplate",
+				url: './html/components/image/imageTemplate.html'
 	},
 	onclickHandler: function(ev){
-		alert('soy item y me han pulsado');
+		alert('soy IMAGE');
 		console.log(this);
 		var currentObject = laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')];
 		if(currentObject.instanceProperties.onclick){
@@ -28,27 +28,24 @@ laurbe.prototype.NavBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
 		}
 
 		//up the notification
-		if(currentObject.owner){
+		if(currentObject.owner && currentObject.owner.onChildItemEvent){
 			currentObject.owner.onChildItemEvent(ev, ev, currentObject);
 		}
 
 		
 
 	},
-	onItemClicked:function (menuItem){
-		console.log(menuItem.id+ ' me avisa que le han clickado ');
+	onItemClicked:function (childItem){
+		console.log(childItem.id+ ' me avisa que le han clickado ');
 		console.log(this.instanceProperties.items);
 	},
 	/**
-	* Mark this item as active render
+	* Return the div Id where the child element must be append
 	**/
-	setActive:function(isActive){
-		if(isActive){
-			$('#'+this.id).addClass('active');
-		}else{
-			$('#'+this.id).removeClass('active');
-		}
-	}	
+	getRenderChildWrapperId:function(){
+		return this.id+'_childsWrapper';
+	}
+		
 
 });
 
@@ -56,25 +53,24 @@ laurbe.prototype.NavBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
 /**
  * Constructor definition
  */
-laurbe.NavBarMenuItem = function navBarMenuItem(args){
+laurbe.Image = function Image(args){
 	
-	/** Init values for laurbe.navBar **/
+	/** Init values **/
 	var defaults = {
 			wrapper:{
-				tag:'<div>'
-			},
-			text:'Option',
-			selected: true
+				tag:'<div>', 
+				class:'d-flex justify-content-center align-self-center'
+			}
 	};
 	
 	/** Extends Defautls with args constructor **/
 	var initializationProps = $.extend({}, defaults, args);
 
 	/**Sitio Id **/
-	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.NavBarMenuItem.type) ;
+	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.Image.type) ;
 
 	/** Return the instance **/
-	var instance = $.extend({}, laurbe.prototype.NavBarMenuItem, {instanceProperties:initializationProps});
+	var instance = $.extend({}, laurbe.prototype.Image, {instanceProperties:initializationProps});
 
 
 	return instance;

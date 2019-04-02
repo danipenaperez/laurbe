@@ -1,11 +1,11 @@
 /**
  * The menu item prototype
  */
-laurbe.prototype.Region = $.extend({}, laurbe.BaseViewElement, {
+laurbe.prototype.Form = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* String type definition
 	**/
-	type: 'region',
+	type: 'form',
 	/**
 	* The laurbe owner element
 	**/
@@ -14,14 +14,14 @@ laurbe.prototype.Region = $.extend({}, laurbe.BaseViewElement, {
 	* This object is from template, so this is the template info
 	**/
 	template: {
-				scriptId : "regionTemplate",
-				url: './html/components/layout/regionTemplate.html'
+				scriptId : "formTemplate",
+				url: './html/components/form/formTemplate.html'
 	},
 	/**
 	* Return the div Id where the child element must be append
 	**/
 	getRenderChildWrapperId:function(){
-		return this.id+'_childsWrapper';
+		return this.id;
 	}
 		
 
@@ -31,13 +31,11 @@ laurbe.prototype.Region = $.extend({}, laurbe.BaseViewElement, {
 /**
  * Constructor definition
  */
-laurbe.Region = function Region(args){
+laurbe.Form = function Form(args){
 	
 	/** Init values **/
 	var defaults = {
-			wrapper:null,//no use wrapper
-			text:'Region',
-			fixedSize:''
+			
 
 	};
 	
@@ -45,10 +43,10 @@ laurbe.Region = function Region(args){
 	var initializationProps = $.extend({}, defaults, args);
 
 	/**Sitio Id **/
-	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.Region.type) ;
+	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.Form.type) ;
 
 	/** Return the instance **/
-	var instance = $.extend({}, laurbe.prototype.Region, {instanceProperties:initializationProps});
+	var instance = $.extend({}, laurbe.prototype.Form, {instanceProperties:initializationProps});
 
 
 	return instance;

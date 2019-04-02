@@ -69,14 +69,19 @@ var laurbe ={
 				this.id = this.instanceProperties.id;
 				laurbe.Directory[this.id] = this;
 				this.fatherElement = $('#'+this.instanceProperties.renderTo);
-				this.ele = $('<div/>', { 
-										 'id':this.id+'Wrapper'
+				
+				if(this.instanceProperties.wrapper && this.instanceProperties.wrapper.tag){
+					this.ele = $(this.instanceProperties.wrapper.tag, { 
+											 'id':this.id+'Wrapper'
 
-										 ,'click': this.onclickHandler
-										 //,
-										 //'html':'<span> soy el '+this.id+'</span>'
-							 			});
-				this.ele.appendTo(this.fatherElement);
+											 ,'click': this.onclickHandler
+											 ,'class': this.instanceProperties.wrapper.class
+											 //'html':'<span> soy el '+this.id+'</span>'
+								 			});
+					this.ele.appendTo(this.fatherElement);
+				}else{
+					this.ele = this.fatherElement; //father and elewrapper are the same object
+				}
 				//this.bindEvents();
 				this.initialized = true;
 			},
@@ -104,7 +109,10 @@ var laurbe ={
 			* After render callback
 			**/
 			afterRender:function(){
-				//bindEvents();
+				if(!this.instanceProperties.wrapper){ //usefull when this.instanceProperties.wrapper is undefined
+					$('#'+this.id).on('click', this.onclickHandler);
+				}
+				
 				var self = this;
 				//self.bindEvents();
 				if(self.instanceProperties.items){
