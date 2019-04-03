@@ -18,7 +18,7 @@ laurbe.prototype.Container = $.extend({}, laurbe.BaseViewElement, {
 				url: './html/components/layout/containerTemplate.html'
 	},
 	onclickHandler: function(ev){
-		alert('soy container');
+		console.log('Container Pulsado');
 		console.log(this);
 		var currentObject = laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')];
 		if(currentObject.instanceProperties.onclick){

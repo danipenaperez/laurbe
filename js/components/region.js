@@ -36,7 +36,8 @@ laurbe.Region = function Region(args){
 	/** Init values **/
 	var defaults = {
 			wrapper:null,//no use wrapper
-			text:'Region',
+			//text:'Region',
+			//align:'float-right',
 			fixedSize:''
 
 	};

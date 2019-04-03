@@ -1,11 +1,11 @@
 /**
  * The menu item prototype
  */
-laurbe.prototype.Form = $.extend({}, laurbe.BaseViewElement, {
+laurbe.prototype.Title = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* String type definition
 	**/
-	type: 'form',
+	type: 'title',
 	/**
 	* The laurbe owner element
 	**/
@@ -14,14 +14,14 @@ laurbe.prototype.Form = $.extend({}, laurbe.BaseViewElement, {
 	* This object is from template, so this is the template info
 	**/
 	template: {
-				scriptId : "formTemplate",
-				url: './html/components/form/formTemplate.html'
+				scriptId : "titleTemplate",
+				url: './html/components/layout/titleTemplate.html'
 	},
 	/**
 	* Return the div Id where the child element must be append
 	**/
 	getRenderChildWrapperId:function(){
-		return this.id;
+		console.log("this element not allows child objects");
 	}
 		
 
@@ -31,22 +31,22 @@ laurbe.prototype.Form = $.extend({}, laurbe.BaseViewElement, {
 /**
  * Constructor definition
  */
-laurbe.Form = function Form(args){
+laurbe.Title = function Title(args){
 	
 	/** Init values **/
 	var defaults = {
-		//title:'myForm'
-
+			wrapper:null,//no use wrapper
+			//text:'Region',
 	};
 	
 	/** Extends Defautls with args constructor **/
 	var initializationProps = $.extend({}, defaults, args);
 
 	/**Sitio Id **/
-	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.Form.type) ;
+	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.Title.type) ;
 
 	/** Return the instance **/
-	var instance = $.extend({}, laurbe.prototype.Form, {instanceProperties:initializationProps});
+	var instance = $.extend({}, laurbe.prototype.Title, {instanceProperties:initializationProps});
 
 
 	return instance;

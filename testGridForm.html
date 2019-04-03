@@ -8,13 +8,41 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	
-    <title>Hello, world!</title>
+    <title>Forms Examples</title>
   </head>
   <body>
 
   	<div id="header"></div>
   	<div id="layoutWaa"></div>
-	<div id="layoutContainer"></div>
+
+
+<!--ESTA ES LA BUENA  con "col" no salta en responsive, con "col-sm" si -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <input class="form-control" id="textField5" value="aucton@hotmail.com" placeholder="Password" type="text">
+    </div>
+    <div class="col-sm">
+      <input class="form-control" id="textField5" value="aucton@hotmail.com" placeholder="Password" type="text">
+    </div>
+    <div class="col-sm">
+      <input class="form-control" id="textField5" value="aucton@hotmail.com" placeholder="Password" type="text">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <input class="form-control" id="textField5" value="aucton@hotmail.com" placeholder="Password" type="text">
+    </div>
+    <div class="col-sm">
+      <input class="form-control" id="textField5" value="aucton@hotmail.com" placeholder="Password" type="text">
+    </div>
+    <div class="col-sm">
+      <input class="form-control" id="textField5" value="aucton@hotmail.com" placeholder="Password" type="text">
+    </div>
+  </div>
+</div>
+
 
 	
 	<!-- jQuery library -->
@@ -85,91 +113,30 @@
 	    	var layout = new laurbe.Container({
 	    		renderTo:'layoutWaa',
 	    		items: [
-					new laurbe.CardGroup({
-					    		items: [
-									  new laurbe.Card({
-										title:'Card1',
-										text:'Novedades de la herramieta, conectate y sientete conectado',
-										footMessage:'footermeeess',
-										img:{
-											src: 'https://www.paradigmadigital.com/wp-content/themes/paradigma13/images/logos/logo_paradigma_2018_rgb.png',
-											alt: 'mi imagen'
-										}
-
-
-									}),	
-									new laurbe.Card({
-										title:'Card2',
-										text:'Si quiere convertirte en chef este es tu lugar',
-										footMessage:'footermeeess',
-										img:{
-											src: 'https://www.paradigmadigital.com/wp-content/uploads/2019/03/testKotlin-01.jpg',
-											alt: 'mi imagen'
-										}
-									}),
-									new laurbe.Card({
-										title:'Card3',
-										text:'Esta apasionante historia nos narra como Juanito valderrama canto a la luna',
-										footMessage:'footermeeess',
-										img:{
-											src: 'http://toyoutome.es/wp-content/uploads/2016/06/EaaS_04.jpg',
-											alt: 'mi imagen'
-										}
-									}),
-									new laurbe.Card({
-										title:'Card3',
-										text:'Vamonos de vacaciones',
-										footMessage:'Vacaciones',
-										img:{
-											src: 'https://www.365imagenesbonitas.com/wp-content/uploads/2017/12/playa-maldivas.jpg',
-											alt: 'mi imagen'
-										}
-									})
-					    		]
-					  }),
-						new laurbe.CardGroup({
-					    		items: [
-									
-									new laurbe.Card({
-										title:'Card1',
-										text:'Novedades de la herramieta, conectate y sientete conectado',
-										footMessage:'footermeeess',
-										img:{
-											src: 'https://www.paradigmadigital.com/wp-content/themes/paradigma13/images/logos/logo_paradigma_2018_rgb.png',
-											alt: 'mi imagen'
-										}
-
-
-									}),	
-									new laurbe.Card({
-										title:'Card2',
-										text:'Si quiere convertirte en chef este es tu lugar',
-										footMessage:'footermeeess',
-										img:{
-											src: 'https://www.paradigmadigital.com/wp-content/uploads/2019/03/testKotlin-01.jpg',
-											alt: 'mi imagen'
-										}
-									}),
-									new laurbe.Card({
-										title:'Card3',
-										text:'Esta apasionante historia nos narra como Juanito valderrama canto a la luna',
-										footMessage:'footermeeess',
-										img:{
-											src: 'http://toyoutome.es/wp-content/uploads/2016/06/EaaS_04.jpg',
-											alt: 'mi imagen'
-										}
-									}),
-									new laurbe.Card({
-										title:'Card3',
-										text:'Vamonos de vacaciones',
-										footMessage:'Vacaciones',
-										img:{
-											src: 'https://www.365imagenesbonitas.com/wp-content/uploads/2017/12/playa-maldivas.jpg',
-											alt: 'mi imagen'
-										}
-									})
-								]
-					    	})
+					new laurbe.Layout({
+						items:[
+							new laurbe.TextField({
+								//label:'email',
+								value:'aucton@hotmail.com'
+							})
+						]
+					}),
+					new laurbe.Layout({
+						items:[
+							new laurbe.TextField({
+								//label:'email',
+								value:'aucton@hotmail.com'
+							})
+						]
+					}),
+					new laurbe.Layout({
+						items:[
+							new laurbe.TextField({
+								//label:'email',
+								value:'aucton@hotmail.com'
+							})
+						]
+					})
 
 					
 				]
