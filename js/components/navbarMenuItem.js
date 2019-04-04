@@ -18,7 +18,7 @@ laurbe.prototype.NavBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
 				url: '/html/components/navBar/navBarMenuItemTemplate.html'
 	},
 	onclickHandler: function(ev){
-		alert('soy item y me han pulsado');
+		console.log('soy item y me han pulsado');
 		console.log(this);
 		var currentObject = laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')];
 		if(currentObject.instanceProperties.onclick){

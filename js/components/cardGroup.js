@@ -53,10 +53,11 @@ laurbe.prototype.CardGroup = $.extend({}, laurbe.BaseViewElement, {
 /**
  * Constructor definition
  */
-laurbe.CardGroup = function Card(args){
+laurbe.CardGroup = function CardGroup(args){
 	
 	/** Init values **/
 	var defaults = {
+			items:[]
 			/**
 			wrapper:{
 				tag:'<div>',

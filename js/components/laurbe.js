@@ -26,6 +26,16 @@ var laurbe ={
 		Directory:{
 
 		},
+		FunctionalElement:{
+			lastWithReference:this,
+			lastAndReference:this,
+			with:function(){
+				return this;
+			},
+			and:function(){
+				return this;
+			}
+		},
 		/**
 		 * Base view element 
 		 */
@@ -81,6 +91,9 @@ var laurbe ={
 					this.ele = this.fatherElement; //father and elewrapper are the same object
 				}
 				//this.bindEvents();
+				if(!this.instanceProperties.items){
+					this.instanceProperties.items =[];
+				}
 				this.initialized = true;
 			},
 			/**
@@ -127,6 +140,7 @@ var laurbe ={
 			appendChilds:function(items, renderNow){
 				var self = this;
 				$.each(items, function( index, item ) {
+					self.instanceProperties.items.push(item);
 					item.owner = self;//reference to parent laurbe object
 				  	item.instanceProperties.renderTo = self.getRenderChildWrapperId();
 				  	if(renderNow == true){
@@ -194,7 +208,10 @@ var laurbe ={
 		 * Default store for prototype loaded references
 		 * (if the Js file is loaded will be added here to be available
 		 */
-		prototype:{},
+		prototype:{
+			BaseApp:{},
+			BaseView:{}
+		},
 		
 		
 		/***********************************/

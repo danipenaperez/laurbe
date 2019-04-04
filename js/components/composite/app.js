@@ -1,11 +1,23 @@
 /**
- * The menu item prototype
- */
-laurbe.prototype.Layout = $.extend({}, laurbe.BaseViewElement, {
+**
+
+var usersView = new View().fromRest("/users")
+							.with({initView:'astable',excludedFields:['creditCard']})
+							.and()
+							.editData('asForm')
+							.with({noneditableFields:['id','email','creditcard']});
+var cartsView = new View().fromRest("/carts")
+							.with({initView:'table'})
+							and()
+							.editData('asForm').
+							with('notEditable');
+var app = new App().withStyleDetfauls().usingViews([new View({'users'}),new View({'carts'})]);
+**/
+laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	/**
 	* String type definition
 	**/
-	type: 'layout',
+	type: 'app',
 	/**
 	* The laurbe owner element
 	**/
@@ -22,7 +34,7 @@ laurbe.prototype.Layout = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	getRenderChildWrapperId:function(){
 		return this.id+'_childsWrapper';
-	}
+	},
 		
 
 });
@@ -31,7 +43,7 @@ laurbe.prototype.Layout = $.extend({}, laurbe.BaseViewElement, {
 /**
  * Constructor definition
  */
-laurbe.Layout = function Layout(args){
+laurbe.App = function APP(args){
 	
 	/** Init values for laurbe.navBar **/
 	var defaults = {

@@ -24,14 +24,12 @@ laurbe.prototype.RestDAO = $.extend({}, laurbe.DAOManager, {
 	* String type definition
 	**/
 	get: function(entityName, callback){
-		alert('voy a hacer get a '+this.entityPaths[entityName])
 		$.ajax ({
 	        type: "GET",
 	        url: this.entityPaths[entityName],
 	        //accept: 'application/json',
 	        //async: false,
 	        success: function (data) {
-	        	alert('session creada '+data);
 	        	callback(data);
 	        },error:function(err){
 	        	alert('something wrong!!');
