@@ -15,7 +15,7 @@ laurbe.prototype.CardGroup = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "cardGroupTemplate",
-				url: './html/components/layout/cardGroupTemplate.html'
+				url: '/html/components/layout/cardGroupTemplate.html'
 	},
 	onclickHandler: function(ev){
 		alert('soy container');

@@ -15,7 +15,7 @@ laurbe.prototype.Container = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "containerTemplate",
-				url: './html/components/layout/containerTemplate.html'
+				url: '/html/components/layout/containerTemplate.html'
 	},
 	onclickHandler: function(ev){
 		console.log('Container Pulsado');

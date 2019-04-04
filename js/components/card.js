@@ -15,10 +15,9 @@ laurbe.prototype.Card = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "cardTemplate",
-				url: './html/components/layout/cardTemplate.html'
+				url: '/html/components/layout/cardTemplate.html'
 	},
 	onclickHandler: function(ev){
-		alert('soy container');
 		console.log(this);
 		var currentObject = laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')];
 		if(currentObject.instanceProperties.onclick){

@@ -15,7 +15,7 @@ laurbe.prototype.Column = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "columnTemplate",
-				url: './html/components/grid/columnTemplate.html'
+				url: '/html/components/grid/columnTemplate.html'
 	},
 	onclickHandler: function(ev){
 		alert('soy container');

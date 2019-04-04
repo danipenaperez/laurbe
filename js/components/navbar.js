@@ -11,7 +11,7 @@ laurbe.prototype.NavBar = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "navbarWrapperTemplate",
-				url: './html/components/navBar/navBarTemplate.html'
+				url: '/html/components/navBar/navBarTemplate.html'
 	},
 	/**
 	* Return the div Id where the child element must be append

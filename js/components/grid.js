@@ -15,7 +15,7 @@ laurbe.prototype.Grid = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "gridTemplate",
-				url: './html/components/grid/gridTemplate.html'
+				url: '/html/components/grid/gridTemplate.html'
 	},
 	onclickHandler: function(ev){
 		alert('soy container');

@@ -15,7 +15,7 @@ laurbe.prototype.Region = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "regionTemplate",
-				url: './html/components/layout/regionTemplate.html'
+				url: '/html/components/layout/regionTemplate.html'
 	},
 	/**
 	* Return the div Id where the child element must be append

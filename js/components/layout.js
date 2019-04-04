@@ -15,7 +15,7 @@ laurbe.prototype.Layout = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "layoutTemplate",
-				url: './html/components/layout/layoutTemplate.html'
+				url: '/html/components/layout/layoutTemplate.html'
 	},
 	/**
 	* Return the div Id where the child element must be append

@@ -15,7 +15,7 @@ laurbe.prototype.Button = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "buttonTemplate",
-				url: './html/components/form/buttonTemplate.html'
+				url: '/html/components/form/buttonTemplate.html'
 	},
 	onclickHandler: function(ev){
 		alert('soy Button');

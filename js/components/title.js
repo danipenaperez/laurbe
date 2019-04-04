@@ -15,7 +15,7 @@ laurbe.prototype.Title = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "titleTemplate",
-				url: './html/components/layout/titleTemplate.html'
+				url: '/html/components/layout/titleTemplate.html'
 	},
 	/**
 	* Return the div Id where the child element must be append

@@ -56,8 +56,6 @@ var laurbe ={
 			getName: function(){
 				return this.id;
 			},
-			
-
 			/**
 			* RenderTo Element Jquery reference
 			**/
@@ -99,7 +97,7 @@ var laurbe ={
 					var self = this;
 					var templateInfo = {appendTo: self.ele, data: self.instanceProperties};
 					//always load to templateManager div container
-					$('#templateManager').load(self.template.url, function(templateString,  ajaxObject, ajaxState){
+					$('#templateManager').load(laurbe.templateManager.templatePath+self.template.url, function(templateString,  ajaxObject, ajaxState){
 						$('#'+self.template.scriptId).tmpl(templateInfo.data).appendTo(templateInfo.appendTo);
 						self.afterRender();
 					});
@@ -124,16 +122,50 @@ var laurbe ={
 				}
 			},
 			/**
+			* If exists this.items (child laurbe Objects) will renderIt
+			**/
+			appendChilds:function(items, renderNow){
+				var self = this;
+				$.each(items, function( index, item ) {
+					item.owner = self;//reference to parent laurbe object
+				  	item.instanceProperties.renderTo = self.getRenderChildWrapperId();
+				  	if(renderNow == true){
+					  	item.render();
+					}
+				});
+			
+			},
+
+			/**
 			* Where to render child elements
 			**/
 			getRenderChildWrapperId:function(){
 				console.log('this component not allows child objects');
 			},
 			/**
+			* Remove all childs
+			*/
+			removeAllChilds:function(){
+				$('#'+this.getRenderChildWrapperId()).empty();//jquery visual destroy
+				this.items = []; //reinitialize items as empty array
+				console.log('all childs have been removed')
+			},
+			/**
+			* destroy the element
+			**/
+			destroy:function(){
+				console.log ('internal destroy '+this.id);
+				var self = this;
+				$.each(this.items, function( index, item ) {
+					destroy();
+				});
+				this.fatherElement.empty();//jquery visual destroy
+				alert('internal destroy END');
+			},
+			/**
 			* default onclick framework handlers
 			**/
 			onclickHandler: function(ev){
-				
 				if(true){
 					console.log('el evento es');
 					console.log(ev);
@@ -199,7 +231,7 @@ var laurbe ={
 		*
 		**/
 		templateManager:{
-
+			templatePath: '.',
 			init: function(){
 				$('<div/>', { 'id':'templateManager'}).appendTo('body');
 			}	

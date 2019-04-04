@@ -15,7 +15,7 @@ laurbe.prototype.TextField = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "textFieldTemplate",
-				url: './html/components/form/textFieldTemplate.html'
+				url: '/html/components/form/textFieldTemplate.html'
 	},
 	onclickHandler: function(ev){
 		console('TEXT FIELD PULSADO');

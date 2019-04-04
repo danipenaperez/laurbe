@@ -15,7 +15,7 @@ laurbe.prototype.Form = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "formTemplate",
-				url: './html/components/form/formTemplate.html'
+				url: '/html/components/form/formTemplate.html'
 	},
 	/**
 	* Return the div Id where the child element must be append

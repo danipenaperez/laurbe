@@ -15,7 +15,7 @@ laurbe.prototype.Image = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	template: {
 				scriptId : "imageTemplate",
-				url: './html/components/image/imageTemplate.html'
+				url: '/html/components/image/imageTemplate.html'
 	},
 	onclickHandler: function(ev){
 		alert('soy IMAGE');
