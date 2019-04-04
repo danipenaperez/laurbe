@@ -235,6 +235,9 @@ var laurbe ={
 			init: function(){
 				$('<div/>', { 'id':'templateManager'}).appendTo('body');
 			}	
+		},
+		DAOManager:{
+
 		}
 		
 
