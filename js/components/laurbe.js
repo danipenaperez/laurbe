@@ -249,8 +249,14 @@ var laurbe ={
 		**/
 		templateManager:{
 			templatePath: '.',
+			initialized:false,
 			init: function(){
-				$('<div/>', { 'id':'templateManager'}).appendTo('body');
+				if(!this.initialized){
+					$('<div/>', { 'id':'templateManager'}).appendTo('body');
+					console.log('templateManager Initialized OK.');
+				}else{
+					console.log('templateManager Already Initialized.');
+				}
 			}	
 		},
 		DAOManager:{
