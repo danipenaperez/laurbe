@@ -18,10 +18,6 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	*
 	**/
 	instanceProperties:{
-		/**
-		 *  the App title and name
-		**/
-		title: 'My App',
 		views:[],
 		appLayoutTemplate:'classic'
 	},
@@ -95,6 +91,8 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 
 			//2.Render the menu
 			self.menu.render();
+			
+			//self.menu.selectMenuItem(self.menu.instanceProperties.items[0]); //by default select the first
 
 			//3.Render first view
 			self.showView(self.views[0]);
@@ -160,6 +158,10 @@ laurbe.App = function APP(args){
 	
 	/** Init values for laurbe.navBar **/
 	var defaults = {
+			/**
+			 *  the App title and name
+			**/
+			title: 'My App',
 			appLayoutTemplate:'classic'
 	};
 	
