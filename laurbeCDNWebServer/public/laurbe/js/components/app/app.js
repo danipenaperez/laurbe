@@ -90,9 +90,9 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			$('#'+appLayoutTemplate.scriptId).tmpl({}).appendTo('body');
 
 			//2.Render the menu
+			self.menu.selectMenuItem(self.menu.instanceProperties.items[0]); //by default select the first
 			self.menu.render();
 			
-			//self.menu.selectMenuItem(self.menu.instanceProperties.items[0]); //by default select the first
 
 			//3.Render first view
 			self.showView(self.views[0]);

@@ -18,7 +18,7 @@ laurbe.prototype.NavBar = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	selectMenuItem:function(menuItem){
 		$.each(this.instanceProperties.items, function( index, item ) {
-			if(menuItem.id == item.id){
+			if(menuItem.instanceProperties.id == item.instanceProperties.id){
 				item.setActive(true);
 			}else{
 				item.setActive(false);

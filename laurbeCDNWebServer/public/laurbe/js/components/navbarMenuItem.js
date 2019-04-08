@@ -44,8 +44,10 @@ laurbe.prototype.NavBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
 	**/
 	setActive:function(isActive){
 		if(isActive){
+			this.instanceProperties.selected=true;
 			$('#'+this.id).addClass('active');
 		}else{
+			this.instanceProperties.selected=false;
 			$('#'+this.id).removeClass('active');
 		}
 	}	
