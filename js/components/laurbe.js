@@ -117,6 +117,14 @@ var laurbe ={
 				}
 			},
 			/**
+			* Rebuild/reinitalize the entire element, and render
+			**/
+			renderTo:function(wrapperId){
+				this.instanceProperties.renderTo=wrapperId;
+				this.initialized=false;
+				this.render();
+			},
+			/**
 			* After render callback
 			**/
 			afterRender:function(){
@@ -129,8 +137,7 @@ var laurbe ={
 				if(self.instanceProperties.items){
 					$.each(self.instanceProperties.items, function( index, item ) {
 						item.owner = self;//reference to parent laurbe object
-					  	item.instanceProperties.renderTo = self.getRenderChildWrapperId();
-					  	item.render();
+					  	item.renderTo(self.getRenderChildWrapperId());
 					});
 				}
 			},

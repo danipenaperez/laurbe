@@ -25,7 +25,9 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		views:[],
 		appLayoutTemplate:'classic'
 	},
-	
+	/**
+	* Info about APP Layout templates
+	**/
 	appLayoutTemplates:{
 		classic:{
 			scriptId : "appTemplate",
@@ -35,7 +37,7 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			scriptId : "appTemplate",
 			url: '/html/components/app/appDashboardTemplate.html'
 		}
-	}	
+	},	
 	
 	/**
 	* The app main Styles , lok and feel
@@ -64,7 +66,7 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			*	The links, the icos, and other laurbe elements
 			**/
 		]
-	}
+	},
 	/**
 	* Builds:
 	*	The menu , based on views
@@ -74,31 +76,41 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		this.views = this.instanceProperties.views;
 		//2.Build The menu based on views
 		this.buildMenu();
+		/**
+		* Render the menu
+		**/
+		this.render();
 
 	},
 	/**
 	* Render the base html structure based on template
 	**/
 	render:function(){
+		var self = this;
 		//Get the selected appLayout
 		var appLayoutTemplate = this.appLayoutTemplates[this.instanceProperties.appLayoutTemplate];
-		$('#templateManager').load(laurbe.templateManager.templatePath+appLayoutTemplate.template.url, function(templateString,  ajaxObject, ajaxState){
+		$('#templateManager').load(laurbe.templateManager.templatePath+appLayoutTemplate.url, function(templateString,  ajaxObject, ajaxState){
+			//1.Render APP Template
 			$('#'+appLayoutTemplate.scriptId).tmpl({}).appendTo('body');
+
+			//2.Render the menu
+			self.menu.render();
+
+			//3.Render first view
+			self.showView(self.views[0]);
+
 		});
-	}
+	},
 	/**
 	* Builds the menu based on views
 	**/
 	buildMenu:function(){
 		var self=this;
-		//Main properties
-		this.menu = new laurbe.NavBar({	
-				        				renderTo:'appMenuContainer',
-										title:this.instanceProperties.title,
-		});
+		
+		var menuItems = [];
 		//Add Items
 		$.each(this.instanceProperties.views, function( index, view ) {
-			self.menu.items.push(
+			menuItems.push(
 					new laurbe.NavBarMenuItem({
 						text:view.instanceProperties.menuName,
 						selected: false,
@@ -109,7 +121,26 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			);
 		});
 
+		//Main properties
+		this.menu = new laurbe.NavBar({	
+				        				renderTo:'appMenuContainer',
+										title:this.instanceProperties.title,
+										items:menuItems
+		});
+
 		return this.menu;
+	},
+	/**
+	*
+	**/
+	showView:function(view){
+		alert('limpiando appMainViewContainer');
+		$('#appMainViewContainer').empty();
+		alert('renderizando view a appMainViewContainer'+view);
+		console.log('y la view es ');
+		console.log(view);
+		view.renderTo('appMainViewContainer');
+
 	},
 	/**
 	*
@@ -129,22 +160,17 @@ laurbe.App = function APP(args){
 	
 	/** Init values for laurbe.navBar **/
 	var defaults = {
-			wrapper:{
-				tag:'<div>',
-				class:'mt-1' //Spacing tòp 1
-			},
-			text:'Option',
-			selected: true
+			appLayoutTemplate:'classic'
 	};
 	
 	/** Extends Defautls with args constructor **/
 	var initializationProps = $.extend({}, defaults, args);
 
 	/**Sitio Id **/
-	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.Layout.type) ;
+	//initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.Layout.type) ;
 
 	/** Return the instance **/
-	var instance = $.extend({}, laurbe.prototype.Layout, {instanceProperties:initializationProps});
+	var instance = $.extend({}, laurbe.prototype.App, {instanceProperties:initializationProps});
 
 
 	return instance;

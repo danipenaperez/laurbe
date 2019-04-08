@@ -1,7 +1,7 @@
 /**
  * The menu item prototype
  */
-laurbe.prototype.Image = $.extend({}, laurbe.daoManager, {
+laurbe.prototype.Image = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* String type definition
 	**/

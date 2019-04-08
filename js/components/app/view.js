@@ -14,6 +14,8 @@ var cartsView = new View().fromRest("/carts")
 var app = new App().withStyleDetfauls().usingViews([new View({'users'}),new View({'carts'})]);
 **/
 laurbe.prototype.View = $.extend({}, laurbe.prototype.BaseAPP, {
+
+	type:'view',
 	/**
 	*
 	**/
@@ -21,10 +23,14 @@ laurbe.prototype.View = $.extend({}, laurbe.prototype.BaseAPP, {
 		/**
 		 *  the App title and name
 		**/
-		menuName: 'View 1'
+		menuName: 'View 1',
 		
 
 	},
+	/**
+	* View elements
+	**/
+	items:[],
 	
 	/**
 	* Builds:
@@ -32,6 +38,12 @@ laurbe.prototype.View = $.extend({}, laurbe.prototype.BaseAPP, {
 	init:function(){
 	
 	},
+
+	renderTo:function(wrapperId){
+		$.each(this.instanceProperties.items, function( index, item ) {
+			item.renderTo(wrapperId);
+		});
+	}
 	
 		
 
@@ -52,10 +64,10 @@ laurbe.View = function View(args){
 	var initializationProps = $.extend({}, defaults, args);
 
 	/**Sitio Id **/
-	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.Layout.type) ;
+	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.View.type) ;
 
 	/** Return the instance **/
-	var instance = $.extend({}, laurbe.prototype.Layout, {instanceProperties:initializationProps});
+	var instance = $.extend({}, laurbe.prototype.View, {instanceProperties:initializationProps});
 
 
 	return instance;
