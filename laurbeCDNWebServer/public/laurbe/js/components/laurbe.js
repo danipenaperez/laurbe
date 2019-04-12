@@ -247,6 +247,7 @@ var laurbe ={
 		init:function(){
 			//create div to load template Manager
 			this.templateManager.init();
+			this.modalDialogManager.init();//create div to load modalDialog Manager
 		},
 		/**
 		* Template Manager
@@ -263,6 +264,18 @@ var laurbe ={
 					console.log('templateManager Initialized OK.');
 				}else{
 					console.log('templateManager Already Initialized.');
+				}
+			}	
+		},
+		modalDialogManager:{
+			templatePath: '.',
+			initialized:false,
+			init: function(){
+				if(!this.initialized){
+					$('<div/>', { 'id':'modalDialogManager'}).appendTo('body');
+					console.log('modalDialogManager Initialized OK.');
+				}else{
+					console.log('modalDialogManager Already Initialized.');
 				}
 			}	
 		},

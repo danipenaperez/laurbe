@@ -43,6 +43,17 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		theme:'dark'
 	},
 	/**
+	* Asspcoated security and error views
+	**/
+	security:{
+		errorView:{
+			401:null,
+			403:null,
+			404:null,
+			500:null
+		}
+	},
+	/**
 	* 
 	**/
 	views:[],
