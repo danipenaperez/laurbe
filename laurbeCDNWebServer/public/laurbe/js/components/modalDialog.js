@@ -35,11 +35,10 @@ laurbe.prototype.ModalDialog = $.extend({}, laurbe.BaseViewElement, {
 	* Show the modalDialog
 	**/
 	show:function(){
-		console.log('el id');
-		console.log('#'+this.id);
+		this.render();
+	},
+	afterRender:function(){
 		$('#'+this.id).show();
-
-		$('#modalDialog15').show();
 	},
 	/**
 	* hide it
