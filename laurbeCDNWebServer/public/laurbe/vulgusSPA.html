@@ -37,7 +37,8 @@
     <script type="text/javascript" src="./js/components/navbarMenuItem.js"></script>
 
     <script type="text/javascript" src="./js/components/image.js"></script>
-        <script type="text/javascript" src="./js/components/button.js"></script>
+    <script type="text/javascript" src="./js/components/button.js"></script>
+    <script type="text/javascript" src="./js/components/buttonGroup.js"></script>
 
     <script type="text/javascript" src="./js/components/container.js"></script>
     <script type="text/javascript" src="./js/components/form.js"></script>
@@ -62,10 +63,73 @@
 							menuName:'Explore',
 							items:[
 								new laurbe.Container({
+									childsWrapperStyle:'text-align:center',
+									items:[
+										new laurbe.ButtonGroup({
+											items:[
+												new laurbe.Button({
+													text:'boton 12'
+												}),
+												new laurbe.Button({
+													text:'boton 13'
+												}),
+												new laurbe.Button({
+													text:'boton 14'
+												})
+											]
+										})
+									]
+								}),
+								new laurbe.Container({
 										items:[
 											new laurbe.Row({
 												text:'joseluis -- Metal -- at your country'
 											}),
+											new laurbe.CardGroup({
+											    		items: [
+															new laurbe.Card({
+																title:'And Justice For All',
+																text:'Full Album Cover session',
+																footMessage:'Metal, Metallica',
+																img:{
+																	src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
+																	alt: 'Metallic Aftenoon'
+																}
+															}),
+															new laurbe.Card({
+																title:'Blues Night',
+																text:'Some blues  ',
+																footMessage:'Blues at Madrid',
+																img:{
+																	src: 'http://xiringuitomarino.com/wp-content/uploads/2017/06/blu.jpg',
+																	alt: 'Blues Jam Session'
+																}
+															}),
+															new laurbe.Card({
+																title:'Anthrax',
+																text:'Anthrax embematic Songs for destruction!! ',
+																footMessage:'Metal, Anthrax',
+																img:{
+																	src: 'https://images.backstreetmerch.com/images/products/bands/misc/anth/bsi_anth17.jpg',
+																	alt: 'Anthrax tribute'
+																}
+															}),
+															new laurbe.Card({
+																title:'Blues Night',
+																text:'Some blues  ',
+																footMessage:'Blues at Madrid',
+																img:{
+																	src: 'http://xiringuitomarino.com/wp-content/uploads/2017/06/blu.jpg',
+																	alt: 'Blues Jam Session'
+																}
+															})
+														]
+											})
+										]
+
+								}),
+								new laurbe.Container({
+										items:[
 											new laurbe.CardGroup({
 											    		items: [
 															new laurbe.Card({
@@ -105,12 +169,42 @@
 											new laurbe.CardGroup({
 											    		items: [
 															new laurbe.Card({
+																title:'Blues Night',
+																text:'Some blues  ',
+																footMessage:'Blues at Madrid',
+																img:{
+																	src: 'http://xiringuitomarino.com/wp-content/uploads/2017/06/blu.jpg',
+																	alt: 'Blues Jam Session'
+																}
+															})
+														]
+											})
+										]
+
+								}),
+								new laurbe.Container({
+										items:[
+											new laurbe.Row({
+												text:'joseluis -- Metal -- at your country'
+											}),
+											new laurbe.CardGroup({
+											    		items: [
+															new laurbe.Card({
 																title:'And Justice For All',
 																text:'Full Album Cover session',
 																footMessage:'Metal, Metallica',
 																img:{
 																	src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
 																	alt: 'Metallic Aftenoon'
+																}
+															}),
+															new laurbe.Card({
+																title:'Blues Night',
+																text:'Some blues  ',
+																footMessage:'Blues at Madrid',
+																img:{
+																	src: 'http://xiringuitomarino.com/wp-content/uploads/2017/06/blu.jpg',
+																	alt: 'Blues Jam Session'
 																}
 															}),
 															new laurbe.Card({
@@ -202,14 +296,21 @@
 		var myProfileView = new laurbe.View({
 								menuName:'Account',
 								items:[
+
 										new laurbe.Layout({
-											    		renderTo:'My Account',
 											    		items: [
 															new laurbe.Region({
 																text:'',
 																items:[
 																	new laurbe.Form({
 																		items:[
+																			new laurbe.Image({
+																				img_src: 'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg',
+																				alt:'Daniel Peña Perez',
+																				onclick: function(){
+																					alert('Yeah, Rock Now!');
+																				}
+																			}),
 																			new laurbe.TextField({
 																				label:'Name',
 																				value:'Daniel Peña Perez (el "serpiente")'
@@ -234,19 +335,6 @@
 																		]
 																	})
 																	
-																]
-															}),
-															new laurbe.Region({
-																text:'',
-																fixedSize:'-2',
-																items:[
-																	new laurbe.Image({
-																		img_src: 'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg',
-																		alt:'Daniel Peña Perez',
-																		onclick: function(){
-																			alert('Yeah, Rock Now!');
-																		}
-																	})
 																]
 															})
 														]

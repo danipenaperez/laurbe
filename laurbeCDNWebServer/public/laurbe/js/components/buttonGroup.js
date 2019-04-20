@@ -1,11 +1,11 @@
 /**
  * The menu item prototype
  */
-laurbe.prototype.Container = $.extend({}, laurbe.BaseViewElement, {
+laurbe.prototype.ButtonGroup = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* String type definition
 	**/
-	type: 'container',
+	type: 'buttonGroup',
 	/**
 	* The laurbe owner element
 	**/
@@ -14,11 +14,11 @@ laurbe.prototype.Container = $.extend({}, laurbe.BaseViewElement, {
 	* This object is from template, so this is the template info
 	**/
 	template: {
-				scriptId : "containerTemplate",
-				url: '/html/components/layout/containerTemplate.html'
+				scriptId : "buttonGroupTemplate",
+				url: '/html/components/form/buttonGroupTemplate.html'
 	},
 	onclickHandler: function(ev){
-		console.log('Container Pulsado');
+		alert('soy Button group');
 		console.log(this);
 		var currentObject = laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')];
 		if(currentObject.instanceProperties.onclick){
@@ -53,30 +53,24 @@ laurbe.prototype.Container = $.extend({}, laurbe.BaseViewElement, {
 /**
  * Constructor definition
  */
-laurbe.Container = function Container(args){
+laurbe.ButtonGroup = function ButtonGroup(args){
 	
 	/** Init values **/
 	var defaults = {
-		
-			wrapper:{
-				tag:'<div>',
-				class :'container'
-				//,class:'d-flex justify-content-center align-self-center'
-			},
-			marginTop:'mt-5'
-			//childsWrapperStyle:'text-align:center'
-			
-			
+			text: 'button',
+			//important do not use wrapper!!
+			type:'primary',
+			//align: 'float-right'
 	};
 	
 	/** Extends Defautls with args constructor **/
 	var initializationProps = $.extend({}, defaults, args);
 
 	/**Sitio Id **/
-	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.Container.type) ;
+	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.ButtonGroup.type) ;
 
 	/** Return the instance **/
-	var instance = $.extend({}, laurbe.prototype.Container, {instanceProperties:initializationProps});
+	var instance = $.extend({}, laurbe.prototype.ButtonGroup, {instanceProperties:initializationProps});
 
 
 	return instance;
