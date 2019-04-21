@@ -43,6 +43,7 @@
     <script type="text/javascript" src="./js/components/container.js"></script>
     <script type="text/javascript" src="./js/components/form.js"></script>
     <script type="text/javascript" src="./js/components/textField.js"></script>
+    <script type="text/javascript" src="./js/components/modalDialog.js"></script>
 
     <script type="text/javascript" src="./js/components/grid.js"></script>
     <script type="text/javascript" src="./js/components/row.js"></script>
@@ -68,13 +69,36 @@
 										new laurbe.ButtonGroup({
 											items:[
 												new laurbe.Button({
-													text:'boton 12'
+													text:'Zone',
+													onclick:function(_self){
+														console.log(this);
+														alert('filtering by Zone');
+														var dialog = new laurbe.ModalDialog({
+																		message:'hola caracola'
+																	});
+														console.log('y soy');
+														console.log(dialog);
+														dialog.render();
+														dialog.show();
+													}
 												}),
 												new laurbe.Button({
-													text:'boton 13'
+													text:'Open Sessions',
+													onclick:function(_self){
+														alert('filtering by Sessions');
+													}
 												}),
 												new laurbe.Button({
-													text:'boton 14'
+													text:'Date',
+													onclick:function(_self){
+														alert('filtering by Date');
+													}
+												}),
+												new laurbe.Button({
+													text:'Genre',
+													onclick:function(_self){
+														alert('filtering by Genre');
+													}
 												})
 											]
 										})
