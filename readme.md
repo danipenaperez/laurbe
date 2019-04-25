@@ -1,3 +1,6 @@
+descargar y luego 
+npm install
+
 ejecutar el minify con 
 
 > cd laurbeCDNWebServer
