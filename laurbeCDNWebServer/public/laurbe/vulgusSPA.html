@@ -368,6 +368,14 @@
 
 			var app = new laurbe.App({
 				title:'Music Arena',
+				navBar:{
+					brand:{
+						logoUrl:'https://i.etsystatic.com/10853708/r/il/f787f8/1841404123/il_794xN.1841404123_myyq.jpg'
+					},
+					searchTool:{
+						placeholder:'que estas buscando..?'
+					}
+				},
 				views:[exploreSessionsView, mySessionsView, myProfileView]
 			});
 			app.init();

@@ -134,7 +134,10 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		this.menu = new laurbe.NavBar({	
 				        				renderTo:'appMenuContainer',
 										title:this.instanceProperties.title,
-										items:menuItems
+										items:menuItems,
+          								brand:this.instanceProperties.navBar.brand,
+          								searchTool:this.instanceProperties.navBar.searchTool
+
 		});
 
 		return this.menu;

@@ -81,6 +81,9 @@ laurbe.NavBar = function NavBar(args){
 			wrapper:{
 				tag:'<div>'
 			},
+			brand:{
+				logoUrl:'https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-outline.svg'
+			},
 			items: []
 	};
 	
