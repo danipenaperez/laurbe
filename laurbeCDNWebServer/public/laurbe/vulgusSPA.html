@@ -52,6 +52,11 @@
     <script type="text/javascript" src="./js/components/cardGroup.js"></script>
     <script type="text/javascript" src="./js/components/card.js"></script>
 
+
+    <script type="text/javascript" src="./js/components/commentsGroup.js"></script>
+    <script type="text/javascript" src="./js/components/comment.js"></script>
+
+
     <script type="text/javascript" src="./js/components/app/app.js"></script>
     <script type="text/javascript" src="./js/components/app/view.js"></script>
 
@@ -313,7 +318,74 @@
 								})
 							]
 	        });
+			var detailedSession = new laurbe.View({
+							menuName:'Detailed Session',
+							items:[
+								new laurbe.Container({
+										items:[
+											new laurbe.CardGroup({
+											    		items: [
+															new laurbe.Card({
+																title:'And Justice For All',
+																text:'Full Album Cover session',
+																footMessage:'Metal, Metallica',
+																img:{
+																	src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
+																	alt: 'Metallic Aftenoon'
+																}
+															})
+														]
+											}),
+											new laurbe.CommentsGroup({
+													title:'Session Comments',
+													items:[
+														new laurbe.Comment({
+															 title:'Manolo',
+															 img:{
+															 	src:'http://rs775.pbsrc.com/albums/yy35/PhoenyxStar/link-1.jpg~c200'
+															 }
+														}),
+														new laurbe.Comment({
+															 title:'Daniel',
+															 img:{
+															 	src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
+															 },
+															 text:'Tu opinion me importa una mierda, erres mas feo que yo, maldito imbecil'
+														}),
+														new laurbe.Comment({
+															 title:'Manolo',
+															 img:{
+															 	src:'http://rs775.pbsrc.com/albums/yy35/PhoenyxStar/link-1.jpg~c200'
+															 },
+															 text:'Bueno, a mi no me pareces tan feo, pero si que es verdad que te podrias lavar un poco mas, aunque sea en fin de semana.'
+														}),
+														new laurbe.Comment({
+															 title:'Daniel',
+															 img:{
+															 	src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
+															 },
+															 text:'Ok, te aviso cuando cambie de opinion'
+														})
+													]
+				    						})
 
+
+
+
+
+
+
+										]
+
+								}),
+								new laurbe.Container({
+										items:[
+											
+										]
+
+								})
+							]
+	        });
 		var myProfileView = new laurbe.View({
 								menuName:'Account',
 								items:[
@@ -376,7 +448,7 @@
 						placeholder:'que estas buscando..?'
 					}
 				},
-				views:[exploreSessionsView, mySessionsView, myProfileView]
+				views:[exploreSessionsView, mySessionsView,detailedSession, myProfileView]
 			});
 			app.init();
 
