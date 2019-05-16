@@ -57,7 +57,7 @@ laurbe.CommentsGroup = function CommentsGroup(args){
 	
 	/** Init values **/
 	var defaults = {
-			title:'Comments',
+			title:null,
 			items:[]
 			/**
 			wrapper:{

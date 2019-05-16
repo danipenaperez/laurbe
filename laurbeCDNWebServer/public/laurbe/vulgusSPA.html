@@ -52,6 +52,10 @@
     <script type="text/javascript" src="./js/components/cardGroup.js"></script>
     <script type="text/javascript" src="./js/components/card.js"></script>
 
+	<script type="text/javascript" src="./js/components/youTubeVideo.js"></script>
+	<script type="text/javascript" src="./js/components/video.js"></script>
+
+	<script type="text/javascript" src="./js/components/spotifyAudio.js"></script>
 
     <script type="text/javascript" src="./js/components/commentsGroup.js"></script>
     <script type="text/javascript" src="./js/components/comment.js"></script>
@@ -434,42 +438,78 @@
 																img:{
 																	src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
 																	alt: 'Metallic Aftenoon'
-																}
+																},
+																items:[
+																	new laurbe.CommentsGroup({
+																				title:'Set List',
+																				items:[
+																					new laurbe.Comment({
+																						 //title:'Manolo',
+																						 items:[
+																						 		new laurbe.SpotifyAudio({
+																									src: 'https://open.spotify.com/embed/track/32OlwWuMpZ6b0aN2RZOeMS'
+																						 		}),
+																						 		new laurbe.SpotifyAudio({
+																									src: 'https://open.spotify.com/embed/track/69kOkLUCkxIZYexIgSG8rq'
+																						 		}),
+																						 		new laurbe.SpotifyAudio({
+																									src: 'https://open.spotify.com/embed/track/1BECwm5qkaBwlbfo4kpYx8'
+																						 		}),
+																						 		new laurbe.SpotifyAudio({
+																									src: 'https://open.spotify.com/embed/track/78XG7U0UueeC86XpzF9O7f'
+																						 		})
+																						 ]
+																					}), 
+																				]
+																	}),
+																	new laurbe.CommentsGroup({
+																				title:'Session Comments',
+																				items:[
+																					new laurbe.Comment({
+																						 title:'Manolo',
+																						 img:{
+																						 	src:'http://rs775.pbsrc.com/albums/yy35/PhoenyxStar/link-1.jpg~c200'
+																						 },
+																						 items:[
+																						 		new laurbe.YouTubeVideo({
+																									src: 'https://www.youtube.com/embed/fA4IHJnKYiw'
+																						 		})
+																						 ]
+																					}),
+																					new laurbe.Comment({
+																						 title:'Daniel',
+																						 img:{
+																						 	src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
+																						 },
+																						 text:'Tu opinion me importa una mierda, erres mas feo que yo, maldito imbecil'
+																					}),
+																					new laurbe.Comment({
+																						 title:'Manolo',
+																						 img:{
+																						 	src:'http://rs775.pbsrc.com/albums/yy35/PhoenyxStar/link-1.jpg~c200'
+																						 },
+																						 text:'Bueno, a mi no me pareces tan feo, pero si que es verdad que te podrias lavar un poco mas, aunque sea en fin de semana.',
+																						 items:[
+																						 		new laurbe.Video({
+																						 				src: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4'
+																						 		})
+																						 ]
+																					}),
+																					new laurbe.Comment({
+																						 title:'Daniel',
+																						 img:{
+																						 	src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
+																						 },
+																						 text:'Ok, te aviso cuando cambie de opinion'
+																					})
+																				]
+											    						})
+
+																]
 															})
 														]
-											}),
-											new laurbe.CommentsGroup({
-													title:'Session Comments',
-													items:[
-														new laurbe.Comment({
-															 title:'Manolo',
-															 img:{
-															 	src:'http://rs775.pbsrc.com/albums/yy35/PhoenyxStar/link-1.jpg~c200'
-															 }
-														}),
-														new laurbe.Comment({
-															 title:'Daniel',
-															 img:{
-															 	src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
-															 },
-															 text:'Tu opinion me importa una mierda, erres mas feo que yo, maldito imbecil'
-														}),
-														new laurbe.Comment({
-															 title:'Manolo',
-															 img:{
-															 	src:'http://rs775.pbsrc.com/albums/yy35/PhoenyxStar/link-1.jpg~c200'
-															 },
-															 text:'Bueno, a mi no me pareces tan feo, pero si que es verdad que te podrias lavar un poco mas, aunque sea en fin de semana.'
-														}),
-														new laurbe.Comment({
-															 title:'Daniel',
-															 img:{
-															 	src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
-															 },
-															 text:'Ok, te aviso cuando cambie de opinion'
-														})
-													]
-				    						})
+											})
+											
 
 
 
