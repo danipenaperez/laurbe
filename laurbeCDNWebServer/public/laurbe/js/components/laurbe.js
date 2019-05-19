@@ -238,6 +238,10 @@ var laurbe ={
 			getIdFor:function(prefix){
 				this.id++;
 				return prefix + this.id;
+			},
+			focusAndScrollToElement:function(elementId){
+				var el = document.getElementById(elementId);
+    			el.scrollIntoView(true);
 			}
 		},
 

@@ -442,9 +442,10 @@
 																items:[
 																	new laurbe.CommentsGroup({
 																				title:'Set List',
+																				id:'detailedSessionSetList',
 																				items:[
 																					new laurbe.Comment({
-																						 //title:'Manolo',
+																						 title:'Manolo',
 																						 items:[
 																						 		new laurbe.SpotifyAudio({
 																									src: 'https://open.spotify.com/embed/track/32OlwWuMpZ6b0aN2RZOeMS'
@@ -458,10 +459,31 @@
 																						 		new laurbe.SpotifyAudio({
 																									src: 'https://open.spotify.com/embed/track/78XG7U0UueeC86XpzF9O7f'
 																						 		})
+																						 		
 																						 ]
-																					}), 
+																					})
 																				]
 																	}),
+																	new laurbe.Button({
+																									text:'boton 11!!',
+																									span:{
+																										text:'4'
+																									},
+																									onclick:function(){
+																										
+																										var setListWrapper = laurbe.Directory['detailedSessionSetList'];
+																										
+																										setListWrapper.appendChilds([
+																												new laurbe.SpotifyAudio({
+																														id:'newSong',
+																														src: 'https://open.spotify.com/embed/track/78XG7U0UueeC86XpzF9O7f'
+																											 		})	
+																											], true);
+
+																										laurbe.utils.focusAndScrollToElement('newSong');
+
+																									}
+																								}),
 																	new laurbe.CommentsGroup({
 																				title:'Session Comments',
 																				items:[

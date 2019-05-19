@@ -18,7 +18,7 @@ laurbe.prototype.Button = $.extend({}, laurbe.BaseViewElement, {
 				url: '/html/components/form/buttonTemplate.html'
 	},
 	onclickHandler: function(ev){
-		alert('soy Button');
+		
 		console.log(this);
 		var currentObject = laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')];
 		if(currentObject.instanceProperties.onclick){
