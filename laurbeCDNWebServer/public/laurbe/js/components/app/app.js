@@ -146,9 +146,9 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	*
 	**/
 	showView:function(view){
-		alert('limpiando appMainViewContainer');
+		//alert('limpiando appMainViewContainer');
 		$('#appMainViewContainer').empty();
-		alert('renderizando view a appMainViewContainer'+view);
+		//alert('renderizando view a appMainViewContainer'+view);
 		console.log('y la view es ');
 		console.log(view);
 		view.renderTo('appMainViewContainer');
