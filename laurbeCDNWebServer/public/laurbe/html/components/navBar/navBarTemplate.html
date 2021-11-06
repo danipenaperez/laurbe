@@ -1,0 +1,35 @@
+<script id="navbarWrapperTemplate" type="text/x-custom-template">
+  	<nav id="${id}" class="navbar navbar-expand-lg navbar-dark bg-dark {{if fixedTop }}fixed-top{{/if}}">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img class="mr-3" src="${brand.logoUrl}" alt="" width="48" height="48">
+       </a>
+        <a class="navbar-brand" href="#">${title}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars_${id}" aria-controls="navbars_${id}" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbars_${id}" >
+          
+            
+          <ul class="navbar-nav mr-auto" id="${id}_childsWrapper" > 
+
+            <!-- Menu items will be render here -->
+            
+
+          </ul>
+          
+          {{if searchTool }}
+            <div id="searchTool">
+                <form class="form-inline my-2 my-md-0">
+                  <input class="form-control" placeholder="${searchTool.placeholder}" aria-label="Search" type="text" style="margin-right: 1rem;"> 
+                </input>
+                </form>
+            </div>
+          {{/if}}
+          <a class="navbar-brand" href="#"><img src="http://rs775.pbsrc.com/albums/yy35/PhoenyxStar/link-1.jpg~c200" height="45" width="45"> </a>
+          
+        </div>
+   	  </div>
+    </nav>
+</script>
