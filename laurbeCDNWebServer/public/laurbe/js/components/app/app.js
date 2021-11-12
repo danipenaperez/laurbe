@@ -152,6 +152,8 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		console.log('y la view es ');
 		console.log(view);
 		view.renderTo('appMainViewContainer');
+		if(view.onShow)
+			view.onShow(view);
 
 	},
 	/**

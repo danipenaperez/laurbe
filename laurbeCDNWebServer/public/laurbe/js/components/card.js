@@ -25,7 +25,9 @@ laurbe.prototype.Card = $.extend({}, laurbe.BaseViewElement, {
 		}else{
 			console.log('no hay event definido para '+currentObject.id);
 		}
-
+		console.log(currentObject);
+		console.log(' y this es');
+		console.log(this);
 		//up the notification
 		if(currentObject.owner && currentObject.owner.onChildItemEvent){
 			currentObject.owner.onChildItemEvent(ev, ev, currentObject);
@@ -44,7 +46,12 @@ laurbe.prototype.Card = $.extend({}, laurbe.BaseViewElement, {
 	getRenderChildWrapperId:function(){
 		return this.id+'_childsWrapper';
 	},
-		
+	onShow: function(){
+		console.log('pues han hecho onShow en un Card'+ this.id);
+		if(this.instanceProperties.onShow)
+			this.instanceProperties.onShow(this);
+	}
+	
 
 });
 

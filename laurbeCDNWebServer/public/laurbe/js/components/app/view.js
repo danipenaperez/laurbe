@@ -40,9 +40,15 @@ laurbe.prototype.View = $.extend({}, laurbe.prototype.BaseAPP, {
 	},
 
 	renderTo:function(wrapperId){
+		console.log('soy el render to de la view');
 		$.each(this.instanceProperties.items, function( index, item ) {
 			item.renderTo(wrapperId);
 		});
+	},
+	onShow:function(){
+		alert('estoy haciendo onshow de una View');
+		if(this.instanceProperties.onShow)
+			this.instanceProperties.onShow(this);
 	}
 	
 		

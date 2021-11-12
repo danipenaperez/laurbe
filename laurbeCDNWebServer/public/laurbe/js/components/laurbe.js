@@ -115,6 +115,11 @@ var laurbe ={
 						self.afterRender();
 					});
 				}
+				if(this.onShow){
+					this.onShow(this);
+				}else{
+					console.log('no tiene on show '+ this.id);
+				}
 			},
 			/**
 			* Rebuild/reinitalize the entire element, and render
@@ -123,6 +128,14 @@ var laurbe ={
 				this.instanceProperties.renderTo=wrapperId;
 				this.initialized=false;
 				this.render();
+			},
+			//reload the view component
+			refresh:function(){
+				console.log('refreshcando');
+				this.destroy();
+				console.log('destroyed');
+				this.render();
+				console.log('refreshcated');
 			},
 			/**
 			* After render callback
@@ -140,6 +153,7 @@ var laurbe ={
 					  	item.renderTo(self.getRenderChildWrapperId());
 					});
 				}
+
 			},
 			/**
 			* If exists this.items (child laurbe Objects) will renderIt
@@ -181,7 +195,7 @@ var laurbe ={
 					destroy();
 				});
 				this.fatherElement.empty();//jquery visual destroy
-				alert('internal destroy END');
+				console.log('internal destroy END');
 			},
 			/**
 			* default onclick framework handlers
