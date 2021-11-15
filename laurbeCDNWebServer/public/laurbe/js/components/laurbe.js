@@ -80,10 +80,9 @@ var laurbe ={
 				
 				if(this.instanceProperties.wrapper && this.instanceProperties.wrapper.tag){
 					this.ele = $(this.instanceProperties.wrapper.tag, { 
-											 'id':this.id+'Wrapper'
-
-											 ,'click': this.onclickHandler
-											 ,'class': this.instanceProperties.wrapper.class
+											 'id':this.id+'Wrapper',
+											 'click': this.onclickHandler,
+											 'class': this.instanceProperties.wrapper.class
 											 //'html':'<span> soy el '+this.id+'</span>'
 								 			});
 					this.ele.appendTo(this.fatherElement);
@@ -161,6 +160,7 @@ var laurbe ={
 			appendChilds:function(items, renderNow){
 				var self = this;
 				$.each(items, function( index, item ) {
+					console.log('appendChilds '+ self.getRenderChildWrapperId());
 					self.instanceProperties.items.push(item);
 					item.owner = self;//reference to parent laurbe object
 				  	item.instanceProperties.renderTo = self.getRenderChildWrapperId();

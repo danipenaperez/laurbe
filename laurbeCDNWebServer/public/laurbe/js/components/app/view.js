@@ -13,9 +13,20 @@ var cartsView = new View().fromRest("/carts")
 							with('notEditable');
 var app = new App().withStyleDetfauls().usingViews([new View({'users'}),new View({'carts'})]);
 **/
-laurbe.prototype.View = $.extend({}, laurbe.prototype.BaseAPP, {
+laurbe.prototype.View = $.extend({}, laurbe.BaseViewElement, {
 
 	type:'view',
+	/**
+	* flag for initialization of current Object
+	**/
+	initialized:false,
+	/**
+	* This object is from template, so this is the template info
+	**/
+	template: {
+			scriptId : "viewTemplate",
+			url: '/html/components/layout/viewTemplate.html'
+	},
 	/**
 	*
 	**/
@@ -35,24 +46,29 @@ laurbe.prototype.View = $.extend({}, laurbe.prototype.BaseAPP, {
 	/**
 	* Builds:
 	**/
-	init:function(){
-	
-	},
+	// init:function(){
+	// 	this.id = this.instanceProperties.id;
+	// 	laurbe.Directory[this.id] = this;
+	// 	initialized=true;
+	// },
 
-	renderTo:function(wrapperId){
-		console.log('soy el render to de la view');
-		$.each(this.instanceProperties.items, function( index, item ) {
-			item.renderTo(wrapperId);
-		});
+	// renderTo:function(wrapperId){
+	// 	console.log('soy el render to de la view '+wrapperId);
+	// 	$.each(this.instanceProperties.items, function( index, item ) {
+	// 		item.renderTo(wrapperId);
+	// 	});
+	// },
+	/**
+	* Return the div Id where the child element must be append
+	**/
+	getRenderChildWrapperId:function(){
+		return this.id+'_childsWrapper';
 	},
 	onShow:function(){
-		alert('estoy haciendo onshow de una View');
+		alert('estoy haciendo onshow de una View '+this.id );
 		if(this.instanceProperties.onShow)
 			this.instanceProperties.onShow(this);
 	}
-	
-		
-
 });
 
 

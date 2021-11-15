@@ -94,6 +94,7 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	**/
 	render:function(){
 		var self = this;
+
 		//Get the selected appLayout
 		var appLayoutTemplate = this.appLayoutTemplates[this.instanceProperties.appLayoutTemplate];
 		$('#templateManager').load(laurbe.templateManager.templatePath+appLayoutTemplate.url, function(templateString,  ajaxObject, ajaxState){
@@ -147,13 +148,16 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	**/
 	showView:function(view){
 		//alert('limpiando appMainViewContainer');
+		if(!view.initialized){
+			view.init();
+		}
 		$('#appMainViewContainer').empty();
 		//alert('renderizando view a appMainViewContainer'+view);
 		console.log('y la view es ');
 		console.log(view);
 		view.renderTo('appMainViewContainer');
-		if(view.onShow)
-			view.onShow(view);
+		// if(view.onShow)
+		// 	view.onShow(view);
 
 	},
 	/**

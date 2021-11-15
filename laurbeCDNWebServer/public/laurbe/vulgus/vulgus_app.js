@@ -528,7 +528,6 @@ var detailedSession = new laurbe.View({
 var myProfileView = new laurbe.View({
 					menuName:'Account',
 					items:[
-
 							new laurbe.Layout({
 											items: [
 												new laurbe.Region({
@@ -575,13 +574,13 @@ var myProfileView = new laurbe.View({
 				});				
 
 		var dynamicView = new laurbe.View({
+					id:'dynamicView',
 					menuName:'dynamicView',
 					onShow:function(instance){
-						console.log('----------------------');
+						console.log('--------on show especifico de la instancia--------');
 						console.log(this);
-						console.log(instance.inst);
-						alert('alla voy');
-																						
+						
+																					
 						laurbe.Directory[instance.id].appendChilds([
 							new laurbe.Layout({
 								items: [
@@ -626,10 +625,6 @@ var myProfileView = new laurbe.View({
 								]
 							})
 							], true);
-
-
-
-
 					},
 					items:[]
 				});		
