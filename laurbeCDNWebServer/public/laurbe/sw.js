@@ -1,15 +1,26 @@
+// self.addEventListener('activate', function(event) {
+//   event.waitUntil(
+//     caches.keys().then(function(cacheNames) {
+//       return Promise.all(
+//         cacheNames.filter(function(cacheName) {
+//           return true;
+//         }).map(function(cacheName) {
+//           console.log("deleting cache "+ cacheName);
+//           return caches.delete(cacheName);
+//         })
+//       );
+//     })
+//   );
+// });
+
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open('fox-store').then((cache) => cache.addAll([
-      '',
-      'index.html',
-      'vulgusSPA.js'
-      // '/pwa-examples/a2hs/style.css',
-      // '/pwa-examples/a2hs/images/fox1.jpg',
-      // '/pwa-examples/a2hs/images/fox2.jpg',
-      // '/pwa-examples/a2hs/images/fox3.jpg',
-      // '/pwa-examples/a2hs/images/fox4.jpg',
-    ])),
+    caches.open('vulgus-spa').then((cache) => cache.addAll([
+      // '/testRepository/',
+      // '/testRepository/index.html',
+      // '/testRepository/index.js',
+      // '/testRepository/vulgusSPA.html'
+    ]))
   );
 });
 

@@ -80,10 +80,9 @@ var laurbe ={
 				
 				if(this.instanceProperties.wrapper && this.instanceProperties.wrapper.tag){
 					this.ele = $(this.instanceProperties.wrapper.tag, { 
-											 'id':this.id+'Wrapper'
-
-											 ,'click': this.onclickHandler
-											 ,'class': this.instanceProperties.wrapper.class
+											 'id':this.id+'Wrapper',
+											 'click': this.onclickHandler,
+											 'class': this.instanceProperties.wrapper.class
 											 //'html':'<span> soy el '+this.id+'</span>'
 								 			});
 					this.ele.appendTo(this.fatherElement);
@@ -115,6 +114,11 @@ var laurbe ={
 						self.afterRender();
 					});
 				}
+				if(this.onShow){
+					this.onShow(this);
+				}else{
+					console.log('no tiene on show '+ this.id);
+				}
 			},
 			/**
 			* Rebuild/reinitalize the entire element, and render
@@ -123,6 +127,14 @@ var laurbe ={
 				this.instanceProperties.renderTo=wrapperId;
 				this.initialized=false;
 				this.render();
+			},
+			//reload the view component
+			refresh:function(){
+				console.log('refreshcando');
+				this.destroy();
+				console.log('destroyed');
+				this.render();
+				console.log('refreshcated');
 			},
 			/**
 			* After render callback
@@ -140,6 +152,7 @@ var laurbe ={
 					  	item.renderTo(self.getRenderChildWrapperId());
 					});
 				}
+
 			},
 			/**
 			* If exists this.items (child laurbe Objects) will renderIt
@@ -147,6 +160,7 @@ var laurbe ={
 			appendChilds:function(items, renderNow){
 				var self = this;
 				$.each(items, function( index, item ) {
+					console.log('appendChilds '+ self.getRenderChildWrapperId());
 					self.instanceProperties.items.push(item);
 					item.owner = self;//reference to parent laurbe object
 				  	item.instanceProperties.renderTo = self.getRenderChildWrapperId();
@@ -181,7 +195,7 @@ var laurbe ={
 					destroy();
 				});
 				this.fatherElement.empty();//jquery visual destroy
-				alert('internal destroy END');
+				console.log('internal destroy END');
 			},
 			/**
 			* default onclick framework handlers
