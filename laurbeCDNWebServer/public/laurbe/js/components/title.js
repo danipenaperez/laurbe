@@ -20,7 +20,7 @@ laurbe.prototype.Title = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* Return the div Id where the child element must be append
 	**/
-	getRenderChildWrapperId:function(){
+	_getRenderChildWrapperId:function(){
 		console.log("this element not allows child objects");
 	}
 		

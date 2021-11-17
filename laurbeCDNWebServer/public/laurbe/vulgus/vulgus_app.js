@@ -20,18 +20,28 @@ var data={
 }
 
 function vulgus_app_init(){
+	var exploreSessionsViewGridDinamic = new laurbe.ScrollableCardListView({
+		menuName:'ScollableGridView',
+		items:[
+		// new laurbe.Card({
+		// 									title:'Anthrax',
+		// 									text:'Anthrax embematic Songs for destruction!! ',
+		// 									footMessage:'Metal, Anthrax',
+		// 									img:{
+		// 										src: 'https://images.backstreetmerch.com/images/products/bands/misc/anth/bsi_anth17.jpg',
+		// 										alt: 'Anthrax tribute'
+		// 									},
+		// 									onclick: function(){
+		// 										alert('me han clickado Anthrax');
+		// 									}
+		// 								})
+		]
+		
+	});
 	
-	
-
-
-
-
 		var exploreSessionsViewGrid = new laurbe.View({
 				menuName:'ShowGrid',
 				
-				onShow: function(){
-					alert('Mostrando Vista de  '+ this.id);
-				},
 				items:[
 					new laurbe.Grid({
 						items:[
@@ -174,7 +184,150 @@ function vulgus_app_init(){
 				]
 			});
 
-
+			var exploreSessionsViewGrid2 = new laurbe.View({
+				menuName:'ShowGrid2',
+				
+				items:[
+					new laurbe.Grid({
+						items:[
+							new laurbe.Row({
+								items:[
+									new laurbe.Column({
+										items:[
+											new laurbe.Card({
+													id: 'Andjustice1',
+													title:'And Justice For All',
+													text:'Full Album Cover session',
+													footMessage:'Metal, Metallica',
+													img:{
+														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
+														alt: 'Metallic Aftenoon'
+													},
+													onclick: function(){
+														this.text="Manolo el del bombo "+Math.random();
+														laurbe.Directory[this.id].refresh();
+													},
+													onShow: function(){
+														alert('soy un onshow del card '+ this.id);
+													}
+												})
+										]
+									}),
+									new laurbe.Column({
+										items:[
+											new laurbe.Card({
+													title:'Anthrax',
+													text:'Anthrax embematic Songs for destruction!! ',
+													footMessage:'Metal, Anthrax',
+													img:{
+														src: 'https://images.backstreetmerch.com/images/products/bands/misc/anth/bsi_anth17.jpg',
+														alt: 'Anthrax tribute'
+													},
+													onclick: function(){
+														alert('me han clickado Anthrax');
+													}
+												})
+										]
+									})
+								]
+							}),
+							new laurbe.Row({
+								items:[
+									new laurbe.Column({
+										items:[
+											new laurbe.Card({
+													title:'And Justice For All',
+													text:'Full Album Cover session',
+													footMessage:'Metal, Metallica',
+													img:{
+														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
+														alt: 'Metallic Aftenoon'
+													},
+													onclick: function(){
+														alert('me han clickado andjustice');
+													}
+												})
+										]
+									}),
+									new laurbe.Column({
+										items:[
+											new laurbe.Card({
+													title:'And Justice For All',
+													text:'Full Album Cover session',
+													footMessage:'Metal, Metallica',
+													img:{
+														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
+														alt: 'Metallic Aftenoon'
+													}
+												})
+										]
+									})
+								]
+							}),
+							new laurbe.Row({
+								items:[
+									new laurbe.Column({
+										items:[
+											new laurbe.Card({
+													title:'And Justice For All',
+													text:'Full Album Cover session',
+													footMessage:'Metal, Metallica',
+													img:{
+														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
+														alt: 'Metallic Aftenoon'
+													}
+												})
+										]
+									}),
+									new laurbe.Column({
+										items:[
+											new laurbe.Card({
+													title:'un poco de pis',
+													text:'Hacer caca',
+													footMessage:'Metal, Metallica',
+													img:{
+														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
+														alt: 'Metallic Aftenoon'
+													}
+												})
+										]
+									})
+								]
+							}),
+							new laurbe.Row({
+								items:[
+									new laurbe.Column({
+										items:[
+											new laurbe.Card({
+													title:'And Justice For All',
+													text:'Miguel Miguel',
+													footMessage:'Metal, Metallica',
+													img:{
+														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
+														alt: 'Metallic Aftenoon'
+													}
+												})
+										]
+									}),
+									new laurbe.Column({
+										items:[
+											new laurbe.Card({
+													title:'And Justice For All',
+													text:'Paco paco',
+													footMessage:'Metal, Metallica',
+													img:{
+														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
+														alt: 'Metallic Aftenoon'
+													}
+												})
+										]
+									})
+								]
+							})
+						]
+					})
+				]
+			});
 
 var exploreSessionsView = new laurbe.View({
 				menuName:'Explore',
@@ -194,7 +347,7 @@ var exploreSessionsView = new laurbe.View({
 														});
 											console.log('y soy');
 											console.log(dialog);
-											dialog.render();
+											dialog._render();
 											dialog.show();
 										}
 									}),
@@ -448,7 +601,7 @@ var detailedSession = new laurbe.View({
 																							
 																							var setListWrapper = laurbe.Directory['detailedSessionSetList'];
 																							
-																							setListWrapper.appendChilds([
+																							setListWrapper._appendChilds([
 																									new laurbe.SpotifyAudio({
 																											id:'newSong',
 																											src: 'https://open.spotify.com/embed/track/78XG7U0UueeC86XpzF9O7f'
@@ -577,56 +730,33 @@ var myProfileView = new laurbe.View({
 					id:'dynamicView',
 					menuName:'dynamicView',
 					onShow:function(instance){
-						console.log('--------on show especifico de la instancia--------');
-						console.log(this);
-						
-																					
-						laurbe.Directory[instance.id].appendChilds([
-							new laurbe.Layout({
-								items: [
-									new laurbe.Region({
-										text:'',
-										items:[
-											new laurbe.Form({
-												items:[
-													new laurbe.Image({
-														img_src: 'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg',
-														alt:'Daniel Peña Perez',
-														onclick: function(){
-															alert('Yeah, Rock Now!');
-														}
-													}),
-													new laurbe.TextField({
-														label:'Name',
-														value:'Daniel Peña Perez (el "serpiente")'
-													}),
-													new laurbe.TextField({
-														label:'edad',
-														value:'40'
-													}),
-													new laurbe.TextField({
-														label:'Score',
-														value:'4/5'
-													}),
-													new laurbe.TextField({
-														label:'Plays',
-														value:'Guitar, Bass'
-													}),
-													new laurbe.TextField({
-														label:'Zones',
-														value:'Madrid , Spain'
-													})
-
-												]
-											})
-											
-										]
-									})
-								]
-							})
-							], true);
+						laurbe.logger.log('--------on show especifico de la instancia--------');
 					},
-					items:[]
+					items:[
+						new laurbe.Layout({
+							items: [
+								new laurbe.Region({
+									text:'',
+									items:[
+										new laurbe.Form({
+											id:'dynamicView_UserForm',
+											items:[
+												new laurbe.Button({
+													text:'Load Form Data',
+													onclick:function(_self){
+														alert('Loading Form Data');
+														loadUserFormData();
+													}
+												})
+
+											]
+										})
+										
+									]
+								})
+							]
+						})
+					]
 				});		
 
 
@@ -640,8 +770,59 @@ var app = new laurbe.App({
 			placeholder:'que estas buscando..?'
 		}
 	},
-	views:[exploreSessionsViewGrid,exploreSessionsView, mySessionsView,detailedSession, myProfileView,dynamicView ]
+	views:[	exploreSessionsViewGridDinamic,
+			exploreSessionsViewGrid, 
+			exploreSessionsViewGrid2, 
+			exploreSessionsView, 
+			mySessionsView,
+			detailedSession, 
+			myProfileView,
+			dynamicView ]
 });
 app.init();
 console.log('cargado desde js');
+}
+
+
+function loadUserFormData(){
+
+	$.get("./vulgus/rest/fetchedSessions.js", function(data, status){
+		alert("Data: " + data + "\nStatus: " + status);
+		console.log(data);
+		var dataLoaded = JSON.parse(data);
+		alert(dataLoaded[0]);
+		console.log(dataLoaded);
+	});
+
+
+
+	laurbe.Directory['dynamicView_UserForm']._appendChilds([
+		new laurbe.Image({
+			img_src: 'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg',
+			alt:'Daniel Peña Perez',
+			onclick: function(){
+				alert('Yeah, Rock Now!');
+			}
+		}),
+		new laurbe.TextField({
+			label:'Name',
+			value:'Daniel Peña Perez (el "serpiente")'
+		}),
+		new laurbe.TextField({
+			label:'edad',
+			value:'40'
+		}),
+		new laurbe.TextField({
+			label:'Score',
+			value:'4/5'
+		}),
+		new laurbe.TextField({
+			label:'Plays',
+			value:'Guitar, Bass'
+		}),
+		new laurbe.TextField({
+			label:'Zones',
+			value:'Madrid , Spain'
+		})
+		], true);
 }

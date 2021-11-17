@@ -16,7 +16,7 @@ laurbe.prototype.ModalDialog = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* Return the div Id where the child element must be append
 	**/
-	getRenderChildWrapperId:function(){
+	_getRenderChildWrapperId:function(){
 		return this.id+'_childsWrapper';
 	},
 	onChildItemEvent:function (eventType, event, eventItem){
@@ -37,7 +37,7 @@ laurbe.prototype.ModalDialog = $.extend({}, laurbe.BaseViewElement, {
 	show:function(){
 		this.render();
 	},
-	afterRender:function(){
+	_afterRender:function(){
 		$('#'+this.id).show();
 	},
 	/**

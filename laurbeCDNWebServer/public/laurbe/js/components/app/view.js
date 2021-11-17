@@ -61,13 +61,19 @@ laurbe.prototype.View = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* Return the div Id where the child element must be append
 	**/
-	getRenderChildWrapperId:function(){
+	_getRenderChildWrapperId:function(){
 		return this.id+'_childsWrapper';
 	},
 	onShow:function(){
-		alert('estoy haciendo onshow de una View '+this.id );
+		laurbe.logger.log('estoy haciendo onshow de una View '+this.id );
 		if(this.instanceProperties.onShow)
 			this.instanceProperties.onShow(this);
+	},
+	/**
+	 * Called on view infinite scroll
+	 */
+	onInfiniteScroll:function(){
+		console.log('estoy on infiniteScroll');
 	}
 });
 

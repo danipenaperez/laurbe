@@ -58,6 +58,10 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	**/
 	views:[],
 	/**
+	 * Reference for current View
+	 */
+	currentView:null,
+	/**
 	* The app menu
 	**/
 	menu:null,
@@ -82,17 +86,17 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		//1.Set the views
 		this.views = this.instanceProperties.views;
 		//2.Build The menu based on views
-		this.buildMenu();
+		this._buildMenu();
 		/**
 		* Render the menu
 		**/
-		this.render();
+		this._render();
 
 	},
 	/**
 	* Render the base html structure based on template
 	**/
-	render:function(){
+	_render:function(){
 		var self = this;
 
 		//Get the selected appLayout
@@ -102,19 +106,22 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			$('#'+appLayoutTemplate.scriptId).tmpl({}).appendTo('body');
 
 			//2.Render the menu
-			self.menu.selectMenuItem(self.menu.instanceProperties.items[0]); //by default select the first
-			self.menu.render();
+			self.menu._selectMenuItem(self.menu.instanceProperties.items[0]); //by default select the first
+			self.menu._render();
 			
 
 			//3.Render first view
-			self.showView(self.views[0]);
+			self._showView(self.views[0]);
+
+			//4.Bind Global Events
+			self._bindGlobalEvents(self);
 
 		});
 	},
 	/**
 	* Builds the menu based on views
 	**/
-	buildMenu:function(){
+	_buildMenu:function(){
 		var self=this;
 		
 		var menuItems = [];
@@ -125,7 +132,7 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 						text:view.instanceProperties.menuName,
 						selected: false,
 						onclick:function(){
-							self.showView(view);
+							self._showView(view);
 						}
 					})
 			);
@@ -146,19 +153,33 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	/**
 	*
 	**/
-	showView:function(view){
+	_showView:function(view){
 		//alert('limpiando appMainViewContainer');
 		if(!view.initialized){
-			view.init();
+			view._init();
 		}
 		$('#appMainViewContainer').empty();
 		//alert('renderizando view a appMainViewContainer'+view);
 		console.log('y la view es ');
 		console.log(view);
-		view.renderTo('appMainViewContainer');
-		// if(view.onShow)
-		// 	view.onShow(view);
-
+		this.currentView = view;
+		view._renderTo('appMainViewContainer');
+	},
+	_bindGlobalEvents:function(app){
+		// Referencia https://www.yogihosting.com/jquery-infinite-scroll/
+		$(window).scroll(function () {
+			// End of the document reached?
+			if ($(document).height() - $(this).height() == $(this).scrollTop()) {
+				app._onInfiniteScrollEvent();
+			}
+		}); 
+	},
+	/**
+	 * Catch global on infinite scroll and call to currentView onInfiniteScroll
+	 */
+	_onInfiniteScrollEvent:function(){
+		console.log('app.oninfiniteScroll');
+		this.currentView.onInfiniteScroll(this.currentView);
 	},
 	/**
 	*

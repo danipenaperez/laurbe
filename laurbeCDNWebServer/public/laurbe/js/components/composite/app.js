@@ -32,7 +32,7 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	/**
 	* Return the div Id where the child element must be append
 	**/
-	getRenderChildWrapperId:function(){
+	_getRenderChildWrapperId:function(){
 		return this.id+'_childsWrapper';
 	},
 		

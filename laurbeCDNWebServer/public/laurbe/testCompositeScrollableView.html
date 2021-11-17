@@ -65,13 +65,45 @@
 
     <script type="text/javascript" src="./js/components/app/app.js"></script>
     <script type="text/javascript" src="./js/components/app/view.js"></script>
-    <script type="text/javascript" src="./js/components/composite/scrollableCardListView.js"></script>
-	<script type="text/javascript" src="./vulgus/vulgus_app.js"></script>
+	<script type="text/javascript" src="./js/components/composite/scrollableCardListView.js"></script>
+
     <script type="text/javascript">
 	    //$( document ).ready(function() {//only waits for DOM loaded
 	    $(window).on('load', function() { //will wait for all js downloaded
 
-			vulgus_app_init();
+            var exploreSessionsViewGrid = new laurbe.ScrollableCardListView({
+				menuName:'ScollableGridView',
+				items:[
+				// new laurbe.Card({
+				// 									title:'Anthrax',
+				// 									text:'Anthrax embematic Songs for destruction!! ',
+				// 									footMessage:'Metal, Anthrax',
+				// 									img:{
+				// 										src: 'https://images.backstreetmerch.com/images/products/bands/misc/anth/bsi_anth17.jpg',
+				// 										alt: 'Anthrax tribute'
+				// 									},
+				// 									onclick: function(){
+				// 										alert('me han clickado Anthrax');
+				// 									}
+				// 								})
+				]
+				
+			});
+			
+            var app = new laurbe.App({
+                title:'Music Arena',
+                navBar:{
+                    brand:{
+                        logoUrl:'https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-outline.svg'
+                    },
+                    searchTool:{
+                        placeholder:'que estas buscando..?'
+                    }
+                },
+                views:[exploreSessionsViewGrid]
+            });
+            app.init();
+
 
 		});
     </script> 

@@ -13,9 +13,9 @@
  */
 var laurbe ={
 		logger: {
-			enabled:false,
+			enabled:true,
 			log:function(obj){
-				if(enabled){
+				if(this.enabled){
 					console.log(obj);
 				}
 			}
@@ -63,7 +63,7 @@ var laurbe ={
 			/**
 			* Returns the id
 			**/
-			getName: function(){
+			_getName: function(){
 				return this.id;
 			},
 			/**
@@ -73,7 +73,7 @@ var laurbe ={
 			/**
 			* initialize the wrapper
 			**/
-			init: function(){
+			_init: function(){
 				this.id = this.instanceProperties.id;
 				laurbe.Directory[this.id] = this;
 				this.fatherElement = $('#'+this.instanceProperties.renderTo);
@@ -101,9 +101,9 @@ var laurbe ={
 			template: null,
 
 			
-			render: function(){
+			_render: function(){
 				if(!this.initialized){
-			  		this.init();
+			  		this._init();
 			  	}
 				if(this.template){
 					var self = this;
@@ -111,7 +111,7 @@ var laurbe ={
 					//always load to templateManager div container
 					$('#templateManager').load(laurbe.templateManager.templatePath+self.template.url, function(templateString,  ajaxObject, ajaxState){
 						$('#'+self.template.scriptId).tmpl(templateInfo.data).appendTo(templateInfo.appendTo);
-						self.afterRender();
+						self._afterRender();
 					});
 				}
 				if(this.onShow){
@@ -123,23 +123,23 @@ var laurbe ={
 			/**
 			* Rebuild/reinitalize the entire element, and render
 			**/
-			renderTo:function(wrapperId){
+			_renderTo:function(wrapperId){
 				this.instanceProperties.renderTo=wrapperId;
 				this.initialized=false;
-				this.render();
+				this._render();
 			},
 			//reload the view component
 			refresh:function(){
 				console.log('refreshcando');
 				this.destroy();
 				console.log('destroyed');
-				this.render();
+				this._render();
 				console.log('refreshcated');
 			},
 			/**
 			* After render callback
 			**/
-			afterRender:function(){
+			_afterRender:function(){
 				if(!this.instanceProperties.wrapper){ //usefull when this.instanceProperties.wrapper is undefined
 					$('#'+this.id).on('click', this.onclickHandler);
 				}
@@ -149,7 +149,7 @@ var laurbe ={
 				if(self.instanceProperties.items){
 					$.each(self.instanceProperties.items, function( index, item ) {
 						item.owner = self;//reference to parent laurbe object
-					  	item.renderTo(self.getRenderChildWrapperId());
+					  	item._renderTo(self._getRenderChildWrapperId());
 					});
 				}
 
@@ -157,15 +157,15 @@ var laurbe ={
 			/**
 			* If exists this.items (child laurbe Objects) will renderIt
 			**/
-			appendChilds:function(items, renderNow){
+			_appendChilds:function(items, renderNow){
 				var self = this;
 				$.each(items, function( index, item ) {
-					console.log('appendChilds '+ self.getRenderChildWrapperId());
+					console.log('_appendChilds '+ self._getRenderChildWrapperId());
 					self.instanceProperties.items.push(item);
 					item.owner = self;//reference to parent laurbe object
-				  	item.instanceProperties.renderTo = self.getRenderChildWrapperId();
+				  	item.instanceProperties.renderTo = self._getRenderChildWrapperId();
 				  	if(renderNow == true){
-					  	item.render();
+					  	item._render();
 					}
 				});
 			
@@ -174,14 +174,14 @@ var laurbe ={
 			/**
 			* Where to render child elements
 			**/
-			getRenderChildWrapperId:function(){
+			_getRenderChildWrapperId:function(){
 				console.log('this component not allows child objects');
 			},
 			/**
 			* Remove all childs
 			*/
 			removeAllChilds:function(){
-				$('#'+this.getRenderChildWrapperId()).empty();//jquery visual destroy
+				$('#'+this._getRenderChildWrapperId()).empty();//jquery visual destroy
 				this.items = []; //reinitialize items as empty array
 				console.log('all childs have been removed')
 			},
@@ -231,7 +231,8 @@ var laurbe ={
 		 */
 		prototype:{
 			BaseApp:{},
-			BaseView:{}
+			BaseView:{},
+			composite:{}
 		},
 		
 		
@@ -256,16 +257,24 @@ var laurbe ={
 			focusAndScrollToElement:function(elementId){
 				var el = document.getElementById(elementId);
     			el.scrollIntoView(true);
+			},
+			pairDataArraywise(arr,groupSize , func ){
+				groupSize = groupSize || 1;
+				console.log(arr);
+				for(let i=0; i < arr.length; i=i+2){
+					console.log('llamando con i '+i)
+					func(arr[i], arr[i + 1])
+				}
 			}
 		},
 
 		/**
 		* Init framework
 		**/
-		init:function(){
+		_init:function(){
 			//create div to load template Manager
-			this.templateManager.init();
-			this.modalDialogManager.init();//create div to load modalDialog Manager
+			this.templateManager._init();
+			this.modalDialogManager._init();//create div to load modalDialog Manager
 		},
 		/**
 		* Template Manager
@@ -276,7 +285,7 @@ var laurbe ={
 		templateManager:{
 			templatePath: '.',
 			initialized:false,
-			init: function(){
+			_init: function(){
 				if(!this.initialized){
 					$('<div/>', { 'id':'templateManager'}).appendTo('body');
 					console.log('templateManager Initialized OK.');
@@ -288,7 +297,7 @@ var laurbe ={
 		modalDialogManager:{
 			templatePath: '.',
 			initialized:false,
-			init: function(){
+			_init: function(){
 				if(!this.initialized){
 					$('<div/>', { 'id':'modalDialogManager'}).appendTo('body');
 					console.log('modalDialogManager Initialized OK.');
@@ -304,4 +313,19 @@ var laurbe ={
 
 };
 
-laurbe.init();
+laurbe._init();
+
+
+/*****************************
+ * PASAR A OTROS ARCHIVOS
+ ****************************/
+
+/**
+ *  Base de todas las vistas compuestas
+ */
+ laurbe.CompositeViewElement = {
+		/**
+		* String type definition
+		**/
+		type: 'laurbeBaseViewElement',
+ }

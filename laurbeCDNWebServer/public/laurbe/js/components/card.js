@@ -43,7 +43,7 @@ laurbe.prototype.Card = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* Return the div Id where the child element must be append
 	**/
-	getRenderChildWrapperId:function(){
+	_getRenderChildWrapperId:function(){
 		return this.id+'_childsWrapper';
 	},
 	onShow: function(){

@@ -16,7 +16,7 @@ laurbe.prototype.NavBar = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* Force a click over a item menu
 	**/
-	selectMenuItem:function(menuItem){
+	_selectMenuItem:function(menuItem){
 		$.each(this.instanceProperties.items, function( index, item ) {
 			if(menuItem.instanceProperties.id == item.instanceProperties.id){
 				item.setActive(true);
@@ -28,7 +28,7 @@ laurbe.prototype.NavBar = $.extend({}, laurbe.BaseViewElement, {
 	/**
 	* Return the div Id where the child element must be append
 	**/
-	getRenderChildWrapperId:function(){
+	_getRenderChildWrapperId:function(){
 		return this.id+'_childsWrapper';
 	},
 	onChildItemEvent:function (eventType, event, eventItem){
