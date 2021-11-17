@@ -116,9 +116,10 @@ var laurbe ={
 				}
 				if(this.onShow){
 					this.onShow(this);
-				}else{
-					console.log('no tiene on show '+ this.id);
 				}
+				// else{
+				// 	console.log('no tiene on show '+ this.id);
+				// }
 			},
 			/**
 			* Rebuild/reinitalize the entire element, and render
@@ -130,11 +131,10 @@ var laurbe ={
 			},
 			//reload the view component
 			refresh:function(){
-				console.log('refreshcando');
+				console.log('laurbe.refresh()');
 				this.destroy();
-				console.log('destroyed');
 				this._render();
-				console.log('refreshcated');
+				// console.log('refreshcated');
 			},
 			/**
 			* After render callback
@@ -181,33 +181,35 @@ var laurbe ={
 			* Remove all childs
 			*/
 			removeAllChilds:function(){
+				console.log('laurbe.removeAllChilds()');
 				$('#'+this._getRenderChildWrapperId()).empty();//jquery visual destroy
 				this.items = []; //reinitialize items as empty array
-				console.log('all childs have been removed')
+				// console.log('all childs have been removed');
 			},
 			/**
 			* destroy the element
 			**/
 			destroy:function(){
-				console.log ('internal destroy '+this.id);
+				console.log('laurbe.destroy()')
 				var self = this;
 				$.each(this.items, function( index, item ) {
 					destroy();
 				});
 				this.fatherElement.empty();//jquery visual destroy
-				console.log('internal destroy END');
+				// console.log('internal destroy END');
 			},
 			/**
 			* default onclick framework handlers
 			**/
 			onclickHandler: function(ev){
 				if(true){
-					console.log('el evento es');
-					console.log(ev);
-					console.log(' y el elemento es');
-					console.log(this);
-					console.log('y el laurbe element es ');
-					console.log(laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')]);
+					console.log('laurbe.OnclickHandler()')
+					// console.log('el evento es');
+					// console.log(ev);
+					// console.log(' y el elemento es');
+					// console.log(this);
+					// console.log('y el laurbe element es ');
+					// console.log(laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')]);
 				}
 			},
 			/**
@@ -260,9 +262,7 @@ var laurbe ={
 			},
 			pairDataArraywise(arr,groupSize , func ){
 				groupSize = groupSize || 1;
-				console.log(arr);
 				for(let i=0; i < arr.length; i=i+2){
-					console.log('llamando con i '+i)
 					func(arr[i], arr[i + 1])
 				}
 			}

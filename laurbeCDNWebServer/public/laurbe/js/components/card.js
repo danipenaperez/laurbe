@@ -18,16 +18,13 @@ laurbe.prototype.Card = $.extend({}, laurbe.BaseViewElement, {
 				url: '/html/components/layout/cardTemplate.html'
 	},
 	onclickHandler: function(ev){
-		console.log(this);
+		console.log('laurbe.Card.onclickHandler()');
 		var currentObject = laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')];
 		if(currentObject.instanceProperties.onclick){
 			currentObject.instanceProperties.onclick(ev);
 		}else{
 			console.log('no hay event definido para '+currentObject.id);
 		}
-		console.log(currentObject);
-		console.log(' y this es');
-		console.log(this);
 		//up the notification
 		if(currentObject.owner && currentObject.owner.onChildItemEvent){
 			currentObject.owner.onChildItemEvent(ev, ev, currentObject);
@@ -37,7 +34,7 @@ laurbe.prototype.Card = $.extend({}, laurbe.BaseViewElement, {
 
 	},
 	onItemClicked:function (childItem){
-		console.log(childItem.id+ ' me avisa que le han clickado ');
+		console.log('laurbe.Card.onItemClicked()');
 		console.log(this.instanceProperties.items);
 	},
 	/**
@@ -47,7 +44,7 @@ laurbe.prototype.Card = $.extend({}, laurbe.BaseViewElement, {
 		return this.id+'_childsWrapper';
 	},
 	onShow: function(){
-		console.log('pues han hecho onShow en un Card'+ this.id);
+		// console.log('pues han hecho onShow en un Card'+ this.id);
 		if(this.instanceProperties.onShow)
 			this.instanceProperties.onShow(this);
 	}

@@ -1,0 +1,7 @@
+.window {
+    height: 8em;
+    overflow: auto;
+    margin: 1em;
+    padding: 1em;
+    border: 10px solid #DFEAF2;
+  }

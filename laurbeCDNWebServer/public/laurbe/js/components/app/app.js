@@ -66,6 +66,10 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	**/
 	menu:null,
 	/**
+	 * The bottom Menu
+	 */
+	bottomMenu:null,
+	/**
 	* Footer
 	**/
 	footer:{
@@ -108,6 +112,7 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			//2.Render the menu
 			self.menu._selectMenuItem(self.menu.instanceProperties.items[0]); //by default select the first
 			self.menu._render();
+			self.bottomMenu._render();
 			
 
 			//3.Render first view
@@ -138,13 +143,21 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			);
 		});
 
-		//Main properties
+		//Build Menus
 		this.menu = new laurbe.NavBar({	
 				        				renderTo:'appMenuContainer',
 										title:this.instanceProperties.title,
 										items:menuItems,
           								brand:this.instanceProperties.navBar.brand,
           								searchTool:this.instanceProperties.navBar.searchTool
+
+		});
+		this.bottomMenu = new laurbe.NavBarBottom({	
+					renderTo:'appMenuFooterContainer',
+					title:this.instanceProperties.title,
+					items:menuItems,
+					brand:this.instanceProperties.navBar.brand,
+					searchTool:this.instanceProperties.navBar.searchTool
 
 		});
 

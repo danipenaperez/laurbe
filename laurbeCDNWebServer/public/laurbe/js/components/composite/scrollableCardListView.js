@@ -12,8 +12,7 @@ laurbe.prototype.composite.ScrollableCardListView = $.extend({}, laurbe.prototyp
 	
 	/**Transform Data into two or three layout column representations */
 	_loadData:function(data){
-		console.log('y this en este caso es ');
-		console.log(this);
+
 		var instanceGridContainer = this.instanceProperties.items[0];
 		if(data){
 			
@@ -32,7 +31,7 @@ laurbe.prototype.composite.ScrollableCardListView = $.extend({}, laurbe.prototyp
 											alt: 'Metallic Aftenoon'
 										},
 										onclick: function(){
-											alert('soy '+obj1);
+											alert('soy '+obj1.title);
 										}
 									})
 							]
