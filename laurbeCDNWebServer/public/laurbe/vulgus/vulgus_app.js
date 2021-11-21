@@ -18,316 +18,78 @@ var data={
 
 	]
 }
+var vulgus_app = null;
 
 function vulgus_app_init(){
 	var exploreSessionsViewGridDinamic = new laurbe.ScrollableCardListView({
 		menuName:'ScollableGridView',
-		items:[
-		// new laurbe.Card({
-		// 									title:'Anthrax',
-		// 									text:'Anthrax embematic Songs for destruction!! ',
-		// 									footMessage:'Metal, Anthrax',
-		// 									img:{
-		// 										src: 'https://images.backstreetmerch.com/images/products/bands/misc/anth/bsi_anth17.jpg',
-		// 										alt: 'Anthrax tribute'
-		// 									},
-		// 									onclick: function(){
-		// 										alert('me han clickado Anthrax');
-		// 									}
-		// 								})
-		]
+		onShow: function(instance){
+
+			console.log('e instance es ');
+			console.log(instance);
+			alert('fetching data from ./vulgus/rest/fetchedSessions.js...');
+			$.getJSON("./vulgus/rest/fetchedSessions.json", function(dataLoaded, status){
+				
+				console.log('estoy en ScrollableView y voy a cargar de lo recibido por llamada Ajax a fetchedSessions.js');
+				alert('received new '+ dataLoaded.length+ ' music sessions');
+				//Es necesario acceder al grid principal
+				var instanceGridContainer = instance.instanceProperties.items[0];
+				//Parte un array en pares de 2 y si es impar siempre queda un elemento suelto
+				laurbe.utils.pairDataArraywise(dataLoaded,2, function(obj1,obj2){
+					var _items =[];
+					if(obj1){
+						_items.push(
+							new laurbe.Column({
+								items:[
+									new laurbe.Card({
+											title:obj1.title,
+											text:obj1.description,
+											footMessage:'Metal,'+obj1.tags[1],
+											img:{
+												src: obj1.img,
+												alt: 'Metallic Aftenoon'
+											},
+											onclick: function(){
+												alert('soy '+obj1.title);
+												vulgus_app._showView(vulgus_app.views[5]);
+											}
+										})
+								]
+							})
+						);
+					}
+					if(obj2){
+						_items.push(
+							new laurbe.Column({
+								items:[
+									new laurbe.Card({
+											title:obj2.title,
+											text:obj2.description,
+											footMessage:'Metal,'+obj2.tags[1],
+											img:{
+												src: obj2.img,
+												alt: 'Metallic Aftenoon'
+											},
+											onclick: function(){
+												alert('soy '+obj2.title);
+											}
+										})
+								]
+							})
+						);
+					}
+					instanceGridContainer._appendChilds([new laurbe.Row({
+						items:_items
+					})],true);
+				});
+				
+			});
+
+		},
+		items:[]
 		
 	});
 	
-		var exploreSessionsViewGrid = new laurbe.View({
-				menuName:'ShowGrid',
-				
-				items:[
-					new laurbe.Grid({
-						items:[
-							new laurbe.Row({
-								items:[
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													id: 'Andjustice1',
-													title:'And Justice For All',
-													text:'Full Album Cover session',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													},
-													onclick: function(){
-														this.text="Manolo el del bombo "+Math.random();
-														laurbe.Directory[this.id].refresh();
-													},
-													onShow: function(){
-														alert('soy un onshow del card '+ this.id);
-													}
-												})
-										]
-									}),
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'Anthrax',
-													text:'Anthrax embematic Songs for destruction!! ',
-													footMessage:'Metal, Anthrax',
-													img:{
-														src: 'https://images.backstreetmerch.com/images/products/bands/misc/anth/bsi_anth17.jpg',
-														alt: 'Anthrax tribute'
-													},
-													onclick: function(){
-														alert('me han clickado Anthrax');
-													}
-												})
-										]
-									})
-								]
-							}),
-							new laurbe.Row({
-								items:[
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'And Justice For All',
-													text:'Full Album Cover session',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													},
-													onclick: function(){
-														alert('me han clickado andjustice');
-													}
-												})
-										]
-									}),
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'And Justice For All',
-													text:'Full Album Cover session',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													}
-												})
-										]
-									})
-								]
-							}),
-							new laurbe.Row({
-								items:[
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'And Justice For All',
-													text:'Full Album Cover session',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													}
-												})
-										]
-									}),
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'un poco de pis',
-													text:'Hacer caca',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													}
-												})
-										]
-									})
-								]
-							}),
-							new laurbe.Row({
-								items:[
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'And Justice For All',
-													text:'Miguel Miguel',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													}
-												})
-										]
-									}),
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'And Justice For All',
-													text:'Paco paco',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													}
-												})
-										]
-									})
-								]
-							})
-						]
-					})
-				]
-			});
-
-			var exploreSessionsViewGrid2 = new laurbe.View({
-				menuName:'ShowGrid2',
-				
-				items:[
-					new laurbe.Grid({
-						items:[
-							new laurbe.Row({
-								items:[
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													id: 'Andjustice1',
-													title:'And Justice For All',
-													text:'Full Album Cover session',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													},
-													onclick: function(){
-														this.text="Manolo el del bombo "+Math.random();
-														laurbe.Directory[this.id].refresh();
-													},
-													onShow: function(){
-														alert('soy un onshow del card '+ this.id);
-													}
-												})
-										]
-									}),
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'Anthrax',
-													text:'Anthrax embematic Songs for destruction!! ',
-													footMessage:'Metal, Anthrax',
-													img:{
-														src: 'https://images.backstreetmerch.com/images/products/bands/misc/anth/bsi_anth17.jpg',
-														alt: 'Anthrax tribute'
-													},
-													onclick: function(){
-														alert('me han clickado Anthrax');
-													}
-												})
-										]
-									})
-								]
-							}),
-							new laurbe.Row({
-								items:[
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'And Justice For All',
-													text:'Full Album Cover session',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													},
-													onclick: function(){
-														alert('me han clickado andjustice');
-													}
-												})
-										]
-									}),
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'And Justice For All',
-													text:'Full Album Cover session',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													}
-												})
-										]
-									})
-								]
-							}),
-							new laurbe.Row({
-								items:[
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'And Justice For All',
-													text:'Full Album Cover session',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													}
-												})
-										]
-									}),
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'un poco de pis',
-													text:'Hacer caca',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													}
-												})
-										]
-									})
-								]
-							}),
-							new laurbe.Row({
-								items:[
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'And Justice For All',
-													text:'Miguel Miguel',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													}
-												})
-										]
-									}),
-									new laurbe.Column({
-										items:[
-											new laurbe.Card({
-													title:'And Justice For All',
-													text:'Paco paco',
-													footMessage:'Metal, Metallica',
-													img:{
-														src: 'https://www.thomann.de/pics/bdb/128185/12948444_800.jpg',
-														alt: 'Metallic Aftenoon'
-													}
-												})
-										]
-									})
-								]
-							})
-						]
-					})
-				]
-			});
 
 var exploreSessionsView = new laurbe.View({
 				menuName:'Explore',
@@ -494,7 +256,7 @@ var exploreSessionsView = new laurbe.View({
 });
 
 var mySessionsView = new laurbe.View({
-				menuName:'My Sessions',
+				menuName:'MySessions',
 				items:[
 					new laurbe.Container({
 							items:[
@@ -554,6 +316,7 @@ var mySessionsView = new laurbe.View({
 });
 var detailedSession = new laurbe.View({
 				menuName:'Detailed Session',
+				id: 'DetailedSessionView',
 				items:[
 					new laurbe.Container({
 							items:[
@@ -618,7 +381,7 @@ var detailedSession = new laurbe.View({
 																		new laurbe.Comment({
 																			 title:'Manolo',
 																			 img:{
-																				 src:'http://rs775.pbsrc.com/albums/yy35/PhoenyxStar/link-1.jpg~c200'
+																				src:'./images/icons/guitar/favicon.png'
 																			 },
 																			 items:[
 																					 new laurbe.YouTubeVideo({
@@ -636,7 +399,7 @@ var detailedSession = new laurbe.View({
 																		new laurbe.Comment({
 																			 title:'Manolo',
 																			 img:{
-																				 src:'http://rs775.pbsrc.com/albums/yy35/PhoenyxStar/link-1.jpg~c200'
+																				src:'./images/icons/guitar/favicon.png'
 																			 },
 																			 text:'Bueno, a mi no me pareces tan feo, pero si que es verdad que te podrias lavar un poco mas, aunque sea en fin de semana.',
 																			 items:[
@@ -648,7 +411,7 @@ var detailedSession = new laurbe.View({
 																		new laurbe.Comment({
 																			 title:'Daniel',
 																			 img:{
-																				 src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
+																				src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
 																			 },
 																			 text:'Ok, te aviso cuando cambie de opinion'
 																		})
@@ -760,7 +523,7 @@ var myProfileView = new laurbe.View({
 				});		
 
 
-var app = new laurbe.App({
+vulgus_app = new laurbe.App({
 	title:'Music Arena',
 	navBar:{
 		brand:{
@@ -771,15 +534,14 @@ var app = new laurbe.App({
 		}
 	},
 	views:[	exploreSessionsViewGridDinamic,
-			exploreSessionsViewGrid, 
-			exploreSessionsViewGrid2, 
 			exploreSessionsView, 
 			mySessionsView,
-			detailedSession, 
+			//detailedSession,
+			detailedView,
 			myProfileView,
 			dynamicView ]
 });
-app.init();
+vulgus_app.init();
 console.log('cargado desde js');
 }
 
