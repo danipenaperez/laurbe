@@ -74,6 +74,9 @@ laurbe.prototype.View = $.extend({}, laurbe.BaseViewElement, {
 	 */
 	onInfiniteScroll:function(){
 		console.log('estoy on infiniteScroll');
+		if(this.instanceProperties.onInfiniteScroll)
+			this.instanceProperties.onInfiniteScroll(this);
+		
 	}
 });
 
