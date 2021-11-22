@@ -45,6 +45,11 @@ laurbe.prototype.CardGroup = $.extend({}, laurbe.BaseViewElement, {
 	_getRenderChildWrapperId:function(){
 		return this.id+'_childsWrapper';
 	},
+	onShow:function(){
+		laurbe.logger.log('estoy haciendo onshow de una CardGroup '+this.id );
+		if(this.instanceProperties.onShow)
+			this.instanceProperties.onShow(this);
+	}
 		
 
 });

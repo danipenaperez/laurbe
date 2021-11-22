@@ -112,11 +112,12 @@ var laurbe ={
 					$('#templateManager').load(laurbe.templateManager.templatePath+self.template.url, function(templateString,  ajaxObject, ajaxState){
 						$('#'+self.template.scriptId).tmpl(templateInfo.data).appendTo(templateInfo.appendTo);
 						self._afterRender();
+						if(self.onShow){
+							self.onShow(this);
+						}
 					});
 				}
-				if(this.onShow){
-					this.onShow(this);
-				}
+				
 				// else{
 				// 	console.log('no tiene on show '+ this.id);
 				// }

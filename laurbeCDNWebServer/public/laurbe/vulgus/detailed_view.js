@@ -5,13 +5,13 @@ var detailedView = new laurbe.ScrollableCardListView({
         new laurbe.Container({
                 items:[
                     new laurbe.CardGroup({
-                        id:'DetailedSession_MainCardGroup',
-                        items:[]
-                    })
-                ]
-            })
-    ],
-    onShow: function(instance){
+                        id:'detailedSessionMainCardGroup',
+                        items:[],
+                        onShow:function(instance){
+                            alert('me acaban de mostrar soy detailedSEsisonmaincard');
+
+
+                            
 
         console.log('e instance es ');
         console.log(instance);
@@ -22,7 +22,7 @@ var detailedView = new laurbe.ScrollableCardListView({
             // var dataLoaded = JSON.parse(data);
 
             //PArsed 
-            var _items=[
+            let to_append_items=[
                 new laurbe.Card({
                     title:data.title,
                     text:data.description,
@@ -125,12 +125,39 @@ var detailedView = new laurbe.ScrollableCardListView({
 
 
 
-            var mainCardGroup = laurbe.Directory['DetailedSession_MainCardGroup'];
-            mainCardGroup._appendChilds([new laurbe.Row({
-                items:_items
+            var mainCardGroup2 = laurbe.Directory['detailedSessionMainCardGroup'];
+            // console.log(laurbe.Directory);
+            // console.log(laurbe.Directory['detailedSessionMainCardGroup']);
+            // alert('maincardgroup es');
+            // alert(mainCardGroup2);
+            // alert(laurbe.Directory['detailedSessionMainCardGroup']);
+            // alert(laurbe.Directory['detailedSessionMainCardGroup']);
+            // console.log(laurbe.Directory['detailedSessionMainCardGroup']);
+            // alert(laurbe.Directory['detailedSessionMainCardGroup']);
+            // alert(laurbe.Directory['detailedSessionMainCardGroup']);
+            mainCardGroup2._appendChilds([new laurbe.Row({
+                items:to_append_items
             })],true);
             
         });
+    
+
+
+
+
+
+
+
+
+
+
+                        }
+                    })
+                ]
+            })
+    ],
+    onShow: function(instance){
+
     }                        
     
 });
