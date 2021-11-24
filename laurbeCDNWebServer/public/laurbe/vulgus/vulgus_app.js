@@ -6,7 +6,7 @@ function vulgus_app_init(){
 	
 
 	var exploreSessionsView = new laurbe.View({
-				menuName:'Explore',
+				menuName:'Explore2',
 				items:[
 					new laurbe.Container({
 						childsWrapperStyle:'text-align:center',

@@ -1,5 +1,5 @@
 var exploreSessionsViewGridDinamic = new laurbe.ScrollableCardListView({
-    menuName:'ScollableGridView',
+    menuName:'Explore',
     items:[],
     pageNumber:0,
     onShow: function(instance){

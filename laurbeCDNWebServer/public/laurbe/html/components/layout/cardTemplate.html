@@ -1,8 +1,8 @@
  <script id="cardTemplate" type="text/x-custom-template">
-	<div class="card" id="${id}">
+	<div class="card h-100" id="${id}">
 	    <img class="card-img-top" src="${img.src}" alt="${img.alt}" height="150" width="100" style="object-fit: cover;"> </img>
 	    <div class="card-body ">
-	      <h5 class="card-title">${title}</h5>
+	      <h1 class="card-title lettering"><b>${title}</b></h1>
 	      <p class="card-text " style="text-overflow: ellipsis;">${text}</p>
 	      <p class="card-text d-none d-sm-block"><small class="text-muted">${footMessage}</small></p>
 	      <!-- with buttons add 
@@ -12,7 +12,8 @@
 				<!-- Child elements will be render here -->
 			</div>
 	    </div>
-	    <div class="card-footer d-none d-sm-block">
+	    <!-- <div class="card-footer d-none d-sm-block"> -->
+		<div class="card-footer">	
 	      <small class="text-muted">Last updated 3 mins ago</small>
 	    </div>
   </div>

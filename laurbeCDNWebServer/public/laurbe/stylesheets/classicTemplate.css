@@ -18,3 +18,12 @@ div[id="appMainContainer"] {
   background-attachment: fixed;
   background-size: cover;
 }
+
+@font-face {
+  font-family: emberlyBlackItalic;
+  src: url(../fonts/emberly/TTF/Emberly-ExtraLight.ttf);
+}
+
+.lettering {
+  font-family: emberlyBlackItalic;
+}
