@@ -263,8 +263,25 @@ var laurbe ={
 			},
 			pairDataArraywise(arr,groupSize , func ){
 				groupSize = groupSize || 1;
-				for(let i=0; i < arr.length; i=i+2){
-					func(arr[i], arr[i + 1])
+				var index=0;
+				var maxSinglesRepeated=3;
+				var currentSingleRowRepeated=0;
+				for(index; index < arr.length; index=index+2){
+					if(Math.random() < 0.5){
+						func(arr[index], arr[index + 1]);
+						currentSingleRowRepeated=0;
+					}else{
+						if(currentSingleRowRepeated < maxSinglesRepeated){
+							func(arr[index]);
+							index=index-1;
+							currentSingleRowRepeated++;
+						}else{
+							func(arr[index], arr[index + 1]);
+							currentSingleRowRepeated=0;
+						}
+						
+					}
+					
 				}
 			}
 		},
