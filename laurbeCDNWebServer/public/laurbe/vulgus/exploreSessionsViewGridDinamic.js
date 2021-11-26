@@ -42,7 +42,7 @@ function fetchSessions(instance){
                                     },
                                     onclick: function(){
                                         alert('soy '+obj1.title);
-                                        vulgus_app._showView(vulgus_app.views[3]);
+                                        vulgus_app._showView(vulgus_app.views[4]);
                                     }
                                 })
                         ]

@@ -1,6 +1,13 @@
  <script id="cardTemplate" type="text/x-custom-template">
 	<div class="card h-100" id="${id}">
 	    <img class="card-img-top" src="${img.src}" alt="${img.alt}" height="150" width="100" style="object-fit: cover;"> </img>
+		
+		<!--Icon top rigth container-->
+		<div class="card-top-rigth-container">
+			<img class="card-top-rigth-icon" src="./icon/fox-icon.png" alt="${img.alt}"> </img>
+			<img class="card-top-rigth-icon" src="./icon/fox-icon.png" alt="${img.alt}"> </img>
+		</div>
+
 	    <div class="card-body ">
 	      <h2 class="card-title lettering textTwoLines"><b>${title}</b></h2>
 	      <p class="card-text textTreeLines">${text}</p>
@@ -12,8 +19,8 @@
 				<!-- Child elements will be render here -->
 			</div>
 	    </div>
-	    <!-- <div class="card-footer d-none d-sm-block"> -->
-		<div class="card-footer">	
+	    <!-- <div class="card-footer d-none d-sm-block">  -->
+		<div class="card-footer"> 	
 	      <small class="text-muted">Last updated 3 mins ago</small>
 	    </div>
   </div>

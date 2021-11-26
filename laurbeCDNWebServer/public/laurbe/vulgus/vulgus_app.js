@@ -3,7 +3,14 @@ var vulgus_app = null;
 
 function vulgus_app_init(){
 
-	
+	var socialLogin = new laurbe.View({
+						menuName:'Login',
+						items:[
+							new laurbe.SocialLoginView({
+
+							})
+						]
+					});
 
 	var exploreSessionsView = new laurbe.View({
 				menuName:'Explore2',
@@ -448,6 +455,7 @@ vulgus_app = new laurbe.App({
 		}
 	},
 	views:[	exploreSessionsViewGridDinamic,
+			socialLogin,
 			exploreSessionsView, 
 			mySessionsView,
 			//detailedSession,

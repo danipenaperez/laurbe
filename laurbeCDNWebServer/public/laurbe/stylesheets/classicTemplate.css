@@ -49,3 +49,14 @@ div[id="appMainContainer"] {
           line-clamp: 3; 
   -webkit-box-orient: vertical;
 }
+
+.card-top-rigth-container {
+  position: absolute;
+  top: 8px; 
+  right: 16px;
+}
+
+.card-top-rigth-icon {
+  height: 25px;
+  width: 25px;
+}
