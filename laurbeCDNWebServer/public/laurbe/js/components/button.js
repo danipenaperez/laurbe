@@ -51,7 +51,7 @@ laurbe.Button = function Button(args){
 	
 	/** Init values **/
 	var defaults = {
-			text: 'button',
+			//text: 'button',
 			//important do not use wrapper!!
 			type:'primary',
 			//align: 'float-right'

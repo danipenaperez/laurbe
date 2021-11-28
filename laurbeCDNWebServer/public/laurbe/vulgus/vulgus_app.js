@@ -461,7 +461,35 @@ vulgus_app = new laurbe.App({
 			//detailedSession,
 			detailedView,
 			myProfileView,
-			dynamicView ]
+			dynamicView ],
+	bottomNavBar:{
+		items:[
+			new laurbe.Button({
+				//text:'Crear',
+				//span:{ text:'4'},
+				image:{
+					src: "https://img.icons8.com/dotty/80/000000/add.png"
+				},
+				onclick:function(){
+					alert('Creando session');
+
+				}
+			}),
+			new laurbe.Button({
+				text:'Share',
+				onclick:function(){
+					try {
+						//https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
+						navigator.share({ title: "Example Page", url: "https://danipenaperez.github.io/testRepository/vulgusSPA.html?session=12345" });
+						console.log("Data was shared successfully");
+					  } catch (err) {
+						console.error("Share failed:", err.message);
+					  }
+
+				}
+			})
+		]
+	}
 });
 vulgus_app.init();
 console.log('cargado desde js');
