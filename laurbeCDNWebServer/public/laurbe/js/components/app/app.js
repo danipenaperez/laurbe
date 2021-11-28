@@ -154,10 +154,6 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		});
 		this.bottomMenu = new laurbe.NavBarBottom({	
 					renderTo:'appMenuFooterContainer',
-					title:this.instanceProperties.title,
-					items:menuItems,
-					brand:this.instanceProperties.navBar.brand,
-					searchTool:this.instanceProperties.navBar.searchTool
 
 		});
 

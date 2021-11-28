@@ -77,15 +77,6 @@ laurbe.NavBarBottom = function NavBarBottom(args){
 	
 	/** Init values for laurbe.navBar **/
 	var navBarBottomDefaults = {
-			title:'defaultTitle',
-			wrapper:{
-				tag:'<div>'
-			},
-			brand:{
-				logoUrl:'https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-outline.svg'
-			},
-			fixedTop:false,
-			items: []
 	};
 	
 	/** Extends Defautls with args constructor **/

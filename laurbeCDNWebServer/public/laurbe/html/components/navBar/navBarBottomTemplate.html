@@ -1,22 +1,16 @@
 <script id="navbarBottomWrapperTemplate" type="text/x-custom-template">
-    <nav class="navbar fixed-bottom navbar-dark bg-dark">
-        <div class="container-fluid justify-content-center" >
-            <button class="btn btn-default">
-                <img src="https://img.icons8.com/dotty/80/000000/add.png" class="img-fluid rounded" width="32" 
-                height="32"/>
-            </button>
+    <div id="${id}" class="navbar fixed-bottom navbar-dark bg-dark">
+        <div id="${id}_childsWrapper"  class="container-fluid justify-content-center" >
+           
+
+                <!-- Menu items will be render here -->
+                <button class="btn btn-default">
+                    <img src="https://img.icons8.com/dotty/80/000000/add.png" class="img-fluid rounded" width="32" 
+                    height="32"/>
+                </button>
             
-            <!--DPP V1
-            CurrentHeight <p id="page_height"> 0</p>
-            ThisHeigth <p id="this_height">0</p>
-            MaxHeigth <p id="page_max_height">0</p>
-            ScrollTop <p id="page_scrolltop">0</p>
-            
-            Acummulated <p id="page_acumulated">0</p>
-            <br>
-        -->
             Areqeuals <p id="page_info">0</p>
             PAge <p id="page_number">0</p>
         </div>
-    </nav>
+    </div>
 </script>
