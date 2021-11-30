@@ -476,6 +476,17 @@ vulgus_app = new laurbe.App({
 				}
 			}),
 			new laurbe.Button({
+				text:'Explore',
+				//span:{ text:'4'},
+				image:{
+					src: "https://img.icons8.com/dotty/80/000000/add.png"
+				},
+				onclick:function(){
+					vulgus_app._navigate('ExploreSessions_View', {"genre": "metal"});
+
+				}
+			}),
+			new laurbe.Button({
 				text:'Share',
 				onclick:function(){
 					try {
