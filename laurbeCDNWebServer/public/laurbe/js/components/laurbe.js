@@ -184,7 +184,7 @@ var laurbe ={
 			removeAllChilds:function(){
 				console.log('laurbe.removeAllChilds()');
 				$('#'+this._getRenderChildWrapperId()).empty();//jquery visual destroy
-				this.items = []; //reinitialize items as empty array
+				this.instanceProperties.items = []; //reinitialize items as empty array
 				// console.log('all childs have been removed');
 			},
 			/**
@@ -260,6 +260,30 @@ var laurbe ={
 			focusAndScrollToElement:function(elementId){
 				var el = document.getElementById(elementId);
     			el.scrollIntoView(true);
+			},
+			/**
+			 * Return a String with this format key1=val1&key2=val2&key3=val3 ....
+			 * @param {javascript object} obj 
+			 */
+			toKeyValueQueryParams:function(data){
+				var str = Object.keys(data).map(key => `${key}=${data[key]}`).join("&");
+				return str;
+			},
+			/**
+			 * From a queryString key=val$key2=val2 ... returns ajavascript object
+			 * can be used as var val1 = laurbe.utils.getUrlVars()["key1"];
+			 * @returns 
+			 */
+			getURLArgs:function(){
+				var vars = [], hash;
+				var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+				for(var i = 0; i < hashes.length; i++)
+				{
+					hash = hashes[i].split('=');
+					vars.push(hash[0]);
+					vars[hash[0]] = hash[1];
+				}
+				return vars;
 			},
 			pairDataArraywise(arr,groupSize , func ){
 				groupSize = groupSize || 1;

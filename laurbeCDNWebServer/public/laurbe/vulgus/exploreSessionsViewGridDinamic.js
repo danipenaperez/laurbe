@@ -1,5 +1,6 @@
 var exploreSessionsViewGridDinamic = new laurbe.ScrollableCardListView({
     menuName:'Explore',
+    id: 'ExploreSessions_View',
     items:[],
     pageNumber:0,
     onShow: function(instance){
@@ -14,13 +15,21 @@ var exploreSessionsViewGridDinamic = new laurbe.ScrollableCardListView({
     
 });
 
-function fetchSessions(instance){
 
+/******
+ *  FUNCTIONALLITY METHODS
+ *****/
+function fetchSessions(instance){
     console.log('e instance es ');
     console.log(instance);
    // alert('fetching data from ./vulgus/rest/fetchedSessions.js...');
     $.getJSON("./vulgus/rest/fetchedSessions.json", function(dataLoaded, status){
         
+        var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?arg=1';    
+        window.history.pushState({ path: refresh }, '', refresh);
+        //url.searchParams.delete('param2');
+
+
         console.log('estoy en ScrollableView y voy a cargar de lo recibido por llamada Ajax a fetchedSessions.js');
         //alert('received new '+ dataLoaded.length+ ' music sessions');
         //Es necesario acceder al grid principal
@@ -41,8 +50,8 @@ function fetchSessions(instance){
                                         alt: 'Metallic Aftenoon'
                                     },
                                     onclick: function(){
-                                        alert('soy '+obj1.title);
-                                        vulgus_app._showView(vulgus_app.views[4]);
+                                        //alert('soy '+obj1.title+ ' '+ obj1.id_session);
+                                        vulgus_app._navigate('DetailedSessionView', {"id_session": obj1.id_session});
                                     }
                                 })
                         ]
@@ -62,7 +71,8 @@ function fetchSessions(instance){
                                         alt: 'Metallic Aftenoon'
                                     },
                                     onclick: function(){
-                                        alert('soy '+obj2.title);
+                                        //alert('soy '+obj2.title+ ' '+ obj2.id_session);
+                                        vulgus_app._navigate('DetailedSessionView', {"id_session": obj2.id_session});
                                     }
                                 })
                         ]

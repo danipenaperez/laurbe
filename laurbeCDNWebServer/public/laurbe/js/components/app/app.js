@@ -58,6 +58,10 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	**/
 	views:[],
 	/**
+	 * To Access by Id
+	 */
+	viewDirectory: {},
+	/**
 	 * Reference for current View
 	 */
 	currentView:null,
@@ -88,12 +92,10 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	**/
 	init:function(){
 		//1.Set the views
-		this.views = this.instanceProperties.views;
+		this._setViews(this.instanceProperties.views);
 		//2.Build The menu based on views
 		this._buildMenu();
-		/**
-		* Render the menu
-		**/
+		//3.Render The Menu
 		this._render();
 
 	},
@@ -122,6 +124,16 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			self._bindGlobalEvents(self);
 
 		});
+	},
+	_setViews:function(views){
+		//Set Views
+		this.views = this.instanceProperties.views;
+		//Set Directory View (ById)
+		for (index = 0; index < views.length; index++) {
+			let currentView = views[index];
+			this.viewDirectory[currentView.instanceProperties.id] = currentView;
+		}
+	
 	},
 	/**
 	* Builds the menu based on views
@@ -169,11 +181,23 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			view._init();
 		}
 		$('#appMainViewContainer').empty();
-		//alert('renderizando view a appMainViewContainer'+view);
-		console.log('y la view es ');
-		console.log(view);
 		this.currentView = view;
 		view._renderTo('appMainViewContainer');
+	},
+	/**
+	 * Show the desired view and add to navigation history
+	 * @param {target } view 
+	 * @param {*} args 
+	 */
+	_navigate:function(viewId, args){
+		args.view=viewId;
+		var view_args = laurbe.utils.toKeyValueQueryParams(args);
+		//1.Set the navigation params and add to history
+		var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+view_args;    
+        window.history.pushState({ path: refresh }, '', refresh);
+		//2.Show the view
+		var targetView = this.viewDirectory[viewId];
+		this._showView(targetView);
 	},
 	_bindGlobalEvents:function(app){
 		// Referencia https://www.yogihosting.com/jquery-infinite-scroll/
@@ -225,9 +249,7 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	 */
 	_onInfiniteScrollEvent:function(){
 		console.log('app.oninfiniteScroll');
-		//alert(1);
 		this.currentView.onInfiniteScroll(this.currentView);
-		//alert(12);
 	},
 	/**
 	*
