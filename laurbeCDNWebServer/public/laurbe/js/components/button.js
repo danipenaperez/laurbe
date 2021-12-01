@@ -54,7 +54,8 @@ laurbe.Button = function Button(args){
 			//text: 'button',
 			//important do not use wrapper!!
 			type:'primary',
-			//align: 'float-right'
+			//align: 'float-right',
+			//extraClass:'btn-block'
 	};
 	
 	/** Extends Defautls with args constructor **/

@@ -462,43 +462,55 @@ vulgus_app = new laurbe.App({
 			detailedView,
 			myProfileView,
 			dynamicView ],
+			
 	bottomNavBar:{
 		items:[
-			new laurbe.Button({
-				//text:'Crear',
-				//span:{ text:'4'},
-				image:{
-					src: "https://img.icons8.com/dotty/80/000000/add.png"
-				},
-				onclick:function(){
-					alert('Creando session');
-
-				}
-			}),
-			new laurbe.Button({
-				text:'Explore',
-				//span:{ text:'4'},
-				image:{
-					src: "https://img.icons8.com/dotty/80/000000/add.png"
-				},
-				onclick:function(){
-					vulgus_app._navigate('ExploreSessions_View', {"genre": "metal"});
-
-				}
-			}),
-			new laurbe.Button({
-				text:'Share',
-				onclick:function(){
-					try {
-						//https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
-						navigator.share({ title: "Example Page", url: "https://danipenaperez.github.io/testRepository/vulgusSPA.html?session=12345" });
-						console.log("Data was shared successfully");
-					  } catch (err) {
-						console.error("Share failed:", err.message);
-					  }
-
-				}
-			})
+					new laurbe.NavBarBottomMenuItem({
+						items:[
+							new laurbe.Button({
+								text:'Explore',
+								extraClass:'btn-block',
+								type:'secondary',
+								//span:{ text:'4'},
+								// image:{
+								// 	src: "https://img.icons8.com/dotty/80/000000/add.png"
+								// },
+								onclick:function(){
+									vulgus_app._navigate('ExploreSessions_View', {"genre": "metal"});
+				
+								}
+							})
+						]
+					}),
+					new laurbe.NavBarBottomMenuItem({
+						items:[
+							new laurbe.Button({
+								text:'Home',
+								extraClass:'btn-block',
+								type:'secondary',
+								// image:{
+								// 	src: "https://img.icons8.com/dotty/80/000000/add.png"
+								// },
+								onclick:function(){
+									vulgus_app._navigate('ExploreSessions_View', {"genre": "metal"});
+				
+								}
+							})
+						]
+					}),
+					new laurbe.NavBarBottomMenuItem({
+						items:[
+							new laurbe.Button({
+								text:'FAv',
+								extraClass:'btn-block',
+								type:'secondary',
+								onclick:function(){
+									vulgus_app._navigate('ExploreSessions_View', {"genre": "metal"});
+				
+								}
+							})
+						]
+					})			
 		]
 	}
 });

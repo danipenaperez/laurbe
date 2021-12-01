@@ -47,7 +47,7 @@
 	* Clicked and MenuItemDlement
 	**/
 	onclickHandler: function(ev){
-		console.log('soy navBar y me han pulsado');
+		console.log('soy navBarBottom y me han pulsado');
 		/**
 		var currentObject = laurbe.Directory[ev.currentTarget.id.replace('Wrapper','')];
 		if(currentObject.instanceProperties.onclick){
@@ -63,7 +63,7 @@
 		$.each(self.instanceProperties.items, function( index, item ) {
 					  	item.setActive();
 					});
-		**/
+		 */
 		
 	}
 
@@ -77,6 +77,11 @@ laurbe.NavBarBottom = function NavBarBottom(args){
 	
 	/** Init values for laurbe.navBar **/
 	var navBarBottomDefaults = {
+		
+		wrapper:{
+			tag:'<div>'
+		},
+		items: []
 	};
 	
 	/** Extends Defautls with args constructor **/

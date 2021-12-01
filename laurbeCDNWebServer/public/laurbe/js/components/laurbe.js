@@ -176,7 +176,7 @@ var laurbe ={
 			* Where to render child elements
 			**/
 			_getRenderChildWrapperId:function(){
-				console.log('this component not allows child objects');
+				console.log('The component '+ this.id+ ' not allows child objects');
 			},
 			/**
 			* Remove all childs

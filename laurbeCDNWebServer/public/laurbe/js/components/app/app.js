@@ -118,7 +118,7 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			
 
 			//3.Render first view
-			self._showView(self.views[0]);
+			self._navigate();
 
 			//4.Bind Global Events
 			self._bindGlobalEvents(self);
@@ -190,13 +190,19 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	 * @param {*} args 
 	 */
 	_navigate:function(viewId, args){
-		args.view=viewId;
+		var targetViewID= viewId != undefined ? viewId :laurbe.utils.getURLArgs()['viewId'];
+		if(!targetViewID){//calculate
+			targetViewID=this.views[0].instanceProperties.id;
+		}
+		if(!args)
+			args={};
+		args.viewId=targetViewID;
 		var view_args = laurbe.utils.toKeyValueQueryParams(args);
 		//1.Set the navigation params and add to history
 		var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+view_args;    
         window.history.pushState({ path: refresh }, '', refresh);
 		//2.Show the view
-		var targetView = this.viewDirectory[viewId];
+		var targetView = this.viewDirectory[targetViewID];
 		this._showView(targetView);
 	},
 	_bindGlobalEvents:function(app){
