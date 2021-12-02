@@ -176,6 +176,7 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 						text:view.instanceProperties.menuName,
 						selected: false,
 						onclick:function(){
+							alert(view.instanceProperties);
 							self.navigatorManager.storeNavigationInfo(view.instanceProperties.id,null);
 							self._showView(view);
 						}
