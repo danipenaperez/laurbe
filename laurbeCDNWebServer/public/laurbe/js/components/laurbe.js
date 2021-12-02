@@ -26,6 +26,12 @@ var laurbe ={
 		Directory:{
 
 		},
+		/**
+		 * Reference for current APP Instance
+		 */
+		currentApp:{
+
+		},
 		FunctionalElement:{
 			lastWithReference:this,
 			lastAndReference:this,
