@@ -9,6 +9,10 @@
 	urlParamsMap:{
         viewId: 'viewId'
     },
+    /**
+     * History loading
+     */
+    history:[],
 	/**
 	* Initialization DAO Phase
 	**/
@@ -70,9 +74,11 @@
 		args.viewId=viewId;
 		var view_args = this._toKeyValueQueryParams(args);
 		//1.Set the navigation params and add to history
-		var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+view_args;    
-        window.history.pushState({ path: refresh }, '', refresh);
-
+		var destinationURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+view_args;    
+        //2.store local array
+        this.history.push(destinationURL);
+        //3.Write to URL Navbar
+        window.history.pushState({ path: destinationURL }, '', destinationURL);
     }
 	
 
