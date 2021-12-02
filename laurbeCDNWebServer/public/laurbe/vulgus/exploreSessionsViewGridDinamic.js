@@ -29,7 +29,6 @@ var exploreSessionsViewGridDinamic = new laurbe.ScrollableCardListView({
             printSessions(data,instance);
         }, function(data){
             alert('Problema al cargar las sesiones');
-            //vulgus_app._navigate('ExploreSessions_View', {"genre": "metal"});
         }
     );
  }

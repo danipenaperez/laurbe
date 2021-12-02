@@ -5,6 +5,7 @@ function vulgus_app_init(){
 
 	var socialLogin = new laurbe.View({
 						menuName:'Login',
+						id: 'Login_View',
 						items:[
 							new laurbe.SocialLoginView({
 
@@ -14,6 +15,7 @@ function vulgus_app_init(){
 
 	var exploreSessionsView = new laurbe.View({
 				menuName:'Explore2',
+				id: 'Explore2_View',
 				items:[
 					new laurbe.Container({
 						childsWrapperStyle:'text-align:center',
@@ -176,6 +178,7 @@ function vulgus_app_init(){
 
 var mySessionsView = new laurbe.View({
 				menuName:'MySessions',
+				id: 'MySessions_View',
 				items:[
 					new laurbe.Container({
 							items:[

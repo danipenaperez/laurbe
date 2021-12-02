@@ -95,7 +95,7 @@ laurbe.View = function View(args){
 	var initializationProps = $.extend({}, defaults, args);
 
 	/**Sitio Id **/
-	initializationProps.id =  initializationProps.id || laurbe.utils.getIdFor(laurbe.prototype.View.type) ;
+	initializationProps.id =  initializationProps.id || initializationProps.menuName+'_View' ;
 
 	/** Return the instance **/
 	var instance = $.extend({}, laurbe.prototype.View, {instanceProperties:initializationProps});
