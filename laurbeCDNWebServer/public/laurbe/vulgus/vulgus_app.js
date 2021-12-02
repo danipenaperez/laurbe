@@ -433,7 +433,8 @@ vulgus_app = new laurbe.App({
 			myProfileView,
 			dynamicView ],
 	dao: new laurbe.RestDAO({
-					basePath:'http://localhost:3000/laurbe'
+					//basePath:'http://localhost:3000/laurbe'
+					basePath:'.'
 	}),
 	storageManager: new laurbe.LocalStorageManager({
 			
