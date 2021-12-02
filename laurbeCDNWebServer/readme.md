@@ -34,6 +34,7 @@ Hacer 2 componeneste de card, un con iconos en la imagen y otro con los iconos f
 
 Hacer que el footer de las card sea un child_items y que se puedan añadir cosas (como iconos, de avisame o me gusta o etc..  y demas)
 
+IMAGE WITH ICONS:
 Molaria hacer un componente imageWithIcons, que es un div con una imagen y un div dentro donde poner iconos sociales o lo que sea.
 Hay varios tipos de card, porque si mueves la image del card dentro del card-body debajo del titulo
 queda mas bonito. Incluso quitando la imagen queda muy bonito tambien.
@@ -63,10 +64,20 @@ ServiceWorker:
 Enviar una notificacion push
 Guardar info en el storage o donde sea (por ejemplo comprobar si estamos logados)
 
+DAO:
+HAcer los daos mas comunes
 
+INDEXEDDB:
+Mirar el tutorial https://es.javascript.info/indexeddb
+
+RENDER:
+Hacer que el render de sesisones, no sea completo y que solo se añadan los nuevos e intentar mover el 
+scroll al ultimo elemento visitado (crear el laurbe.ScrollableLastFocusElement)
 
 FUNCIONALIDADES:
 ====================
+Hacer otra aplicacion en paralelo, como por ejemplo la de amistosos de deportes.
+
 Navegacion Dummy:
 Hacer mas archivos js con la info del detalle de la session y que se pinte la que toque para que de sensacion mas real, ya que siempre vmaos al andjustice
 

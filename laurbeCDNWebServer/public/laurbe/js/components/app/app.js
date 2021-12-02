@@ -54,6 +54,18 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		}
 	},
 	/**
+	 * Global DAO (will be injected in each view to generate laurbe.RESTView?)
+	 */
+	dao:null,
+	/**
+	 * Global Storage Engine
+	 */
+	storageManager:null,
+	/**
+	 * Global Navigator
+	 */
+	navigatorManager:null,
+	/**
 	* 
 	**/
 	views:[],
@@ -91,6 +103,8 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	*	The menu , based on views
 	**/
 	init:function(){
+		//0.Set core elements
+		this._setCoreElements(this.instanceProperties);
 		//1.Set the views
 		this._setViews(this.instanceProperties.views);
 		//2.Build The menu based on views
@@ -99,6 +113,19 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		this._render();
 
 	},
+	/**
+	 * Initialize DAO or others core features
+	 * @param {} instanceProperties 
+	 */
+	_setCoreElements:function(instanceProperties){
+		if(instanceProperties.dao)
+			this.dao=instanceProperties.dao;
+		if(instanceProperties.storageManager)
+			this.storageManager=instanceProperties.storageManager;
+		if(!instanceProperties.navigatorManager)
+			this.navigatorManager = new laurbe.NavigatorManager({});
+		
+	},	
 	/**
 	* Render the base html structure based on template
 	**/
@@ -190,17 +217,13 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 	 * @param {*} args 
 	 */
 	_navigate:function(viewId, args){
-		var targetViewID= viewId != undefined ? viewId :laurbe.utils.getURLArgs()['viewId'];
+		//0.Validations
+		var targetViewID= viewId != undefined ? viewId :this.navigatorManager.getCurrentViewId();
 		if(!targetViewID){//calculate
 			targetViewID=this.views[0].instanceProperties.id;
 		}
-		if(!args)
-			args={};
-		args.viewId=targetViewID;
-		var view_args = laurbe.utils.toKeyValueQueryParams(args);
-		//1.Set the navigation params and add to history
-		var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+view_args;    
-        window.history.pushState({ path: refresh }, '', refresh);
+		//1.Store Navigation info
+		this.navigatorManager.storeNavigationInfo(targetViewID, args);
 		//2.Show the view
 		var targetView = this.viewDirectory[targetViewID];
 		this._showView(targetView);

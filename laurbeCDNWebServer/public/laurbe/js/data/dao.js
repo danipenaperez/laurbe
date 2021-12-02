@@ -8,6 +8,10 @@ laurbe.prototype.RestDAO = $.extend({}, laurbe.DAOManager, {
 	entityPaths: null,
 	headers:null,
 	/**
+	 * Base host url (http://localhost:3000/myapi)
+	 */
+	basePath:null,
+	/**
 	* Initialization DAO Phase
 	**/
 	init:function(){
@@ -23,21 +27,40 @@ laurbe.prototype.RestDAO = $.extend({}, laurbe.DAOManager, {
 	/**
 	* String type definition
 	**/
-	get: function(entityName, callback){
+	get: function(entityName, callback, _errCallback){
 		$.ajax ({
 	        type: "GET",
+			dataType:'json',
 	        url: this.entityPaths[entityName],
 	        //accept: 'application/json',
 	        //async: false,
 	        success: function (data) {
 	        	callback(data);
 	        },error:function(err){
-	        	alert('something wrong!!');
 	        	console.log(err);
-	        	callback(err);
+	        	_errCallback(err);
 	        }
 	    });
 	    
+	},
+		/**
+	* String type definition
+	**/
+	getURL: function(url, callback, _errCallback){
+		$.ajax ({
+	        type: "GET",
+			dataType:'json',
+	        url: this.basePath+url,
+	        //accept: 'application/json',
+	        //async: false,
+	        success: function (data) {
+	        	callback(data);
+	        },error:function(err){
+	        	
+	        	console.log(err);
+	        	_errCallback(err);
+	        }
+	    });
 	}
 
 });

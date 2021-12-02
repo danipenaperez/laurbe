@@ -152,6 +152,14 @@ var laurbe ={
 						item.owner = self;//reference to parent laurbe object
 					  	item._renderTo(self._getRenderChildWrapperId());
 					});
+					// for(item of self.instanceProperties.items){
+					// 	item.owner = self;//reference to parent laurbe object
+					//   	item._renderTo(self._getRenderChildWrapperId());
+					// }
+					// for  (i=0;i<self.instanceProperties.items.length;i++){
+					// 	self.instanceProperties.items[i].owner = self;//reference to parent laurbe object
+					// 	self.instanceProperties.items[i]._renderTo(self._getRenderChildWrapperId());
+					// }
 				}
 
 			},
@@ -160,15 +168,27 @@ var laurbe ={
 			**/
 			_appendChilds:function(items, renderNow){
 				var self = this;
-				$.each(items, function( index, item ) {
+				// $.each(items, function( index, item ) {
+				// 	console.log('_appendChilds '+ self._getRenderChildWrapperId());
+				// 	self.instanceProperties.items.push(item);
+				// 	item.owner = self;//reference to parent laurbe object
+				//   	item.instanceProperties.renderTo = self._getRenderChildWrapperId();
+				//   	if(renderNow == true){
+				// 	  	item._render();
+				// 	}
+				// });
+
+				for  (i=0;i<items.length;i++){  // Maybe ensure synchronously
 					console.log('_appendChilds '+ self._getRenderChildWrapperId());
+					var item = items[i];
 					self.instanceProperties.items.push(item);
 					item.owner = self;//reference to parent laurbe object
 				  	item.instanceProperties.renderTo = self._getRenderChildWrapperId();
 				  	if(renderNow == true){
 					  	item._render();
 					}
-				});
+				}
+
 			
 			},
 
@@ -261,30 +281,6 @@ var laurbe ={
 				var el = document.getElementById(elementId);
     			el.scrollIntoView(true);
 			},
-			/**
-			 * Return a String with this format key1=val1&key2=val2&key3=val3 ....
-			 * @param {javascript object} obj 
-			 */
-			toKeyValueQueryParams:function(data){
-				var str = Object.keys(data).map(key => `${key}=${data[key]}`).join("&");
-				return str;
-			},
-			/**
-			 * From a queryString key=val$key2=val2 ... returns ajavascript object
-			 * can be used as var val1 = laurbe.utils.getUrlVars()["key1"];
-			 * @returns 
-			 */
-			getURLArgs:function(){
-				var vars = [], hash;
-				var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-				for(var i = 0; i < hashes.length; i++)
-				{
-					hash = hashes[i].split('=');
-					vars.push(hash[0]);
-					vars[hash[0]] = hash[1];
-				}
-				return vars;
-			},
 			pairDataArraywise(arr,groupSize , func ){
 				groupSize = groupSize || 1;
 				var index=0;
@@ -349,6 +345,12 @@ var laurbe ={
 			}	
 		},
 		DAOManager:{
+
+		},
+		LocalStorageManager:{
+
+		},
+		Navigator:{
 
 		}
 		

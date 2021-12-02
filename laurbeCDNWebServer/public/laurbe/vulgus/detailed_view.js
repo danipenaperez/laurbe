@@ -12,9 +12,14 @@ var detailedView = new laurbe.ScrollableCardListView({
                             var mainCardGroup2 = laurbe.Directory['detailedSessionMainCardGroup'];
                             mainCardGroup2.removeAllChilds();
                             //LOAD
-                            var loadViewArgs = laurbe.utils.getURLArgs();
-                            fetchSession(loadViewArgs, instance);
-                            
+                            var id_session = vulgus_app.navigatorManager.getCurrentViewArg('id_session');
+                            console.log('es mas es qeu idesesion es '+id_session);
+                            if(id_session){
+                                fetchSession(id_session, instance);
+                            }else{
+                                alert('No existe el parametro en la url error No existe el sessionid');
+                                vulgus_app._navigate('ExploreSessions_View', {"genre": "metal"});
+                            }
                         }
                     })
                 ]
@@ -27,130 +32,136 @@ var detailedView = new laurbe.ScrollableCardListView({
 /******
  *  FUNCTIONALLITY METHODS
  *****/
- function fetchSession(loadViewArgs, instance){
+ function fetchSession(id_session, instance){
     //alert(loadViewArgs.id_session);
     //alert('fetching data from ./vulgus/rest/sessions_andjustice.js...');
-    var targetURL = "./vulgus/rest/sessions_"+loadViewArgs.id_session+".json";
-
-
-    $.ajax({
-        url: targetURL,
-        dataType:'json',
-        success:function(data){
-            let to_append_items=[
-                new laurbe.Card({
-                    title:data.title,
-                    text:data.description,
-                    footMessage:'Metal, Metallica',
-                    img:{
-                        src: data.img,
-                        alt: 'Metallic Aftenoon'
-                    },
-                    items:[
-                        new laurbe.CommentsGroup({
-                                    title:'Set List',
-                                    id:'detailedSessionSetList',
-                                    items:[
-                                        new laurbe.Comment({
-                                            title:'Manolo',
-                                            items:[
-                                                    new laurbe.SpotifyAudio({
-                                                        src: 'https://open.spotify.com/embed/track/32OlwWuMpZ6b0aN2RZOeMS'
-                                                    }),
-                                                    new laurbe.SpotifyAudio({
-                                                        src: 'https://open.spotify.com/embed/track/69kOkLUCkxIZYexIgSG8rq'
-                                                    }),
-                                                    new laurbe.SpotifyAudio({
-                                                        src: 'https://open.spotify.com/embed/track/1BECwm5qkaBwlbfo4kpYx8'
-                                                    }),
-                                                    new laurbe.SpotifyAudio({
-                                                        src: 'https://open.spotify.com/embed/track/78XG7U0UueeC86XpzF9O7f'
-                                                    })
-                                                    
-                                            ]
-                                        })
-                                    ]
-                        }),
-                        new laurbe.Button({
-                                                        text:'boton 11!!',
-                                                        span:{
-                                                            text:'4'
-                                                        },
-                                                        onclick:function(){
-                                                            
-                                                            var setListWrapper = laurbe.Directory['detailedSessionSetList'];
-                                                            
-                                                            setListWrapper._appendChilds([
-                                                                    new laurbe.SpotifyAudio({
-                                                                            id:'newSong',
-                                                                            src: 'https://open.spotify.com/embed/track/78XG7U0UueeC86XpzF9O7f'
-                                                                        })	
-                                                                ], true);
-    
-                                                            laurbe.utils.focusAndScrollToElement('newSong');
-    
-                                                        }
-                                                    }),
-                        new laurbe.CommentsGroup({
-                                    title:'Session Comments',
-                                    items:[
-                                        new laurbe.Comment({
-                                            title:'Manolo',
-                                            img:{
-                                                src:'./images/icons/guitar/favicon.png'
-                                            },
-                                            items:[
-                                                    new laurbe.YouTubeVideo({
-                                                        src: 'https://www.youtube.com/embed/fA4IHJnKYiw'
-                                                    })
-                                            ]
-                                        }),
-                                        new laurbe.Comment({
-                                            title:'Daniel',
-                                            img:{
-                                                src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
-                                            },
-                                            text:'Tu opinion me importa una mierda, erres mas feo que yo, maldito imbecil'
-                                        }),
-                                        new laurbe.Comment({
-                                            title:'Manolo',
-                                            img:{
-                                                src:'./images/icons/guitar/favicon.png'
-                                            },
-                                            text:'Bueno, a mi no me pareces tan feo, pero si que es verdad que te podrias lavar un poco mas, aunque sea en fin de semana.',
-                                            items:[
-                                                    new laurbe.Video({
-                                                            src: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4'
-                                                    })
-                                            ]
-                                        }),
-                                        new laurbe.Comment({
-                                            title:'Daniel',
-                                            img:{
-                                                src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
-                                            },
-                                            text:'Ok, te aviso cuando cambie de opinion'
-                                        })
-                                    ]
-                            })
-    
-                    ]
-                })
-            ];
-    
-    
-    
-            var mainCardGroup2 = laurbe.Directory['detailedSessionMainCardGroup'];
-            mainCardGroup2.removeAllChilds();
-            mainCardGroup2._appendChilds([new laurbe.Row({
-                items:to_append_items
-            })],true);
-        },
-        error:function(){
+    var targetURL = "/vulgus/rest/sessions_"+id_session+".json";
+    vulgus_app.dao.getURL(targetURL, 
+        function(data){
+            printSessionInfo(data);
+        }, function(data){
             alert('error No existe el sessionid');
             vulgus_app._navigate('ExploreSessions_View', {"genre": "metal"});
         }
-    });
+    );
+ }
+
+
+ function printSessionInfo(data){
+    let to_append_items=[
+        new laurbe.Card({
+            title:data.title,
+            text:data.description,
+            footMessage:'Metal, Metallica',
+            img:{
+                src: data.img,
+                alt: 'Metallic Aftenoon'
+            },
+            items:[
+                new laurbe.CommentsGroup({
+                            title:'Set List',
+                            id:'detailedSessionSetList',
+                            items:[
+                                new laurbe.Comment({
+                                    title:'Manolo',
+                                    items:[
+                                            new laurbe.SpotifyAudio({
+                                                src: 'https://open.spotify.com/embed/track/32OlwWuMpZ6b0aN2RZOeMS'
+                                            }),
+                                            new laurbe.SpotifyAudio({
+                                                src: 'https://open.spotify.com/embed/track/69kOkLUCkxIZYexIgSG8rq'
+                                            }),
+                                            new laurbe.SpotifyAudio({
+                                                src: 'https://open.spotify.com/embed/track/1BECwm5qkaBwlbfo4kpYx8'
+                                            }),
+                                            new laurbe.SpotifyAudio({
+                                                src: 'https://open.spotify.com/embed/track/78XG7U0UueeC86XpzF9O7f'
+                                            })
+                                            
+                                    ]
+                                })
+                            ]
+                }),
+                new laurbe.Button({
+                                                text:'boton 11!!',
+                                                span:{
+                                                    text:'4'
+                                                },
+                                                onclick:function(){
+                                                    
+                                                    var setListWrapper = laurbe.Directory['detailedSessionSetList'];
+                                                    
+                                                    setListWrapper._appendChilds([
+                                                            new laurbe.SpotifyAudio({
+                                                                    id:'newSong',
+                                                                    src: 'https://open.spotify.com/embed/track/78XG7U0UueeC86XpzF9O7f'
+                                                                })	
+                                                        ], true);
+
+                                                    laurbe.utils.focusAndScrollToElement('newSong');
+
+                                                }
+                                            }),
+                new laurbe.CommentsGroup({
+                            title:'Session Comments',
+                            items:[
+                                new laurbe.Comment({
+                                    title:'Manolo',
+                                    img:{
+                                        src:'./images/icons/guitar/favicon.png'
+                                    },
+                                    items:[
+                                            new laurbe.YouTubeVideo({
+                                                src: 'https://www.youtube.com/embed/fA4IHJnKYiw'
+                                            })
+                                    ]
+                                }),
+                                new laurbe.Comment({
+                                    title:'Daniel',
+                                    img:{
+                                        src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
+                                    },
+                                    text:'Tu opinion me importa una mierda, erres mas feo que yo, maldito imbecil'
+                                }),
+                                new laurbe.Comment({
+                                    title:'Manolo',
+                                    img:{
+                                        src:'./images/icons/guitar/favicon.png'
+                                    },
+                                    text:'Bueno, a mi no me pareces tan feo, pero si que es verdad que te podrias lavar un poco mas, aunque sea en fin de semana.',
+                                    items:[
+                                            new laurbe.Video({
+                                                    src: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4'
+                                            })
+                                    ]
+                                }),
+                                new laurbe.Comment({
+                                    title:'Daniel',
+                                    img:{
+                                        src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
+                                    },
+                                    text:'Ok, te aviso cuando cambie de opinion'
+                                })
+                            ]
+                    })
+
+            ]
+        })
+    ];
+
+
+
+    var mainCardGroup2 = laurbe.Directory['detailedSessionMainCardGroup'];
+    mainCardGroup2.removeAllChilds();
+    mainCardGroup2._appendChilds([new laurbe.Row({
+        items:to_append_items
+    })],true);
+}
+
+
+
+
+
 
 /**
     $.getJSON(targetURL, function(data, status){
@@ -268,4 +279,3 @@ var detailedView = new laurbe.ScrollableCardListView({
         
     });
     */
-}
