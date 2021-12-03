@@ -522,6 +522,21 @@ vulgus_app = new laurbe.App({
 								}
 							})
 						]
+					}),
+					new laurbe.NavBarBottomMenuItem({
+						items:[
+							new laurbe.Image({
+								img_src: 'https://key0.cc/images/preview/33822_98c940126c635dc1d39a6a275a915c3a.png',
+								alt:'share',
+								width:"32",
+								height:"32",
+								onclick: function(){
+									var currentURL = vulgus_app.navigatorManager.getCurrentViewCompleteURL();
+									alert('estoy en '+currentURL);
+									vulgus_app.shareSocialManager.shareCurrentViewToAllAvailable("VulgusAPP te enrrolla colega", currentURL);
+								}
+							})
+						]
 					})
 					
 

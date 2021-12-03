@@ -17,12 +17,8 @@ PAra arrancar
 > npm start
 
 
-/// QUE QUEDA
-
-
-
-
-
+/**
+ QUE QUEDA
 
 
 COMPONENTES:
@@ -73,6 +69,9 @@ Mirar el tutorial https://es.javascript.info/indexeddb
 RENDER:
 Hacer que el render de sesisones, no sea completo y que solo se añadan los nuevos e intentar mover el 
 scroll al ultimo elemento visitado (crear el laurbe.ScrollableLastFocusElement)
+
+BACKBUTTON:
+Controlar el back button del device https://stackoverflow.com/questions/25806608/how-to-detect-browser-back-button-event-cross-browser
 
 FUNCIONALIDADES:
 ====================

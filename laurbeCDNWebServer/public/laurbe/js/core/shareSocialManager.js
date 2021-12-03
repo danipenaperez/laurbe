@@ -16,6 +16,11 @@
      * @returns 
      */
     shareCurrentViewToAllAvailable:function(title, viewURL){
+        const shareData = {
+            title: title,
+            text: 'Join to Vulgus',
+            url: viewURL
+        };
         if(navigator.canShare()){
             navigator.share({ title: title, url: viewURL});
         }else{
