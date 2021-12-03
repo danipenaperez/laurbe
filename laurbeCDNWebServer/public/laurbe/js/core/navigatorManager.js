@@ -85,7 +85,7 @@
 		args.viewId=viewId;
 		var view_args = this._toKeyValueQueryParams(args);
 		//1.Set the navigation params and add to history
-		var destinationURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+view_args+'#viewId='+viewId;    
+		var destinationURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+view_args;    
         //2.store local array
         this.history.push({viewId:viewId, args:args});
         
