@@ -37,7 +37,7 @@ queda mas bonito. Incluso quitando la imagen queda muy bonito tambien.
 
 TOP MENU:
 -Hacer que el logo "desaparezca" en modo fade cuando se de hacia arriba
--Los menus no se estan quedando como Active si se navega a traves de "Navigator"
+
 
 
 UPLOAD: 
@@ -145,6 +145,7 @@ Dividir la barra en los elementos que se vayan a tener. ahora estan en el centro
 
 TOP MENU:
 -EL logon del musicArena, hay que hacer algo o imagen o cambiar la tipografia. Los css no son recomendables, mejor meter un backfround repeat.
+-Los menus no se estan quedando como Active si se navega a traves de "Navigator"
 
 Funcionalidad
 --------------

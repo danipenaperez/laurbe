@@ -175,15 +175,18 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		var menuItems = [];
 		//Add Items
 		$.each(this.instanceProperties.views, function( index, view ) {
+			
+			var menuItem = new laurbe.NavBarMenuItem({
+				text:view.instanceProperties.menuName,
+				relatedView:view,
+				selected: false,
+				onclick:function(){
+					self._navigate(this.relatedView.instanceProperties.id,null);
+				}
+			});
+			view.relatedMenuItem=menuItem;
 			menuItems.push(
-					new laurbe.NavBarMenuItem({
-						text:view.instanceProperties.menuName,
-						selected: false,
-						onclick:function(){
-							self.navigatorManager.storeNavigationInfo(view.instanceProperties.id,null);
-							self._showView(view);
-						}
-					})
+				menuItem
 			);
 		});
 
@@ -231,6 +234,7 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 		this.navigatorManager.storeNavigationInfo(targetViewID, args);
 		//2.Show the view
 		var targetView = this.viewDirectory[targetViewID];
+		this.menu._selectMenuItem(targetView.relatedMenuItem);
 		this._showView(targetView);
 	},
 	_bindGlobalEvents:function(app){

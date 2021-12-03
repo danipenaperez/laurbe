@@ -39,6 +39,10 @@ laurbe.prototype.View = $.extend({}, laurbe.BaseViewElement, {
 
 	},
 	/**
+	 * If this view is associate with a topNavBar Menu Item
+	 */
+	relatedMenuItem:null,
+	/**
 	* View elements
 	**/
 	items:[],

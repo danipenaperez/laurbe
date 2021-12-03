@@ -17,6 +17,14 @@ laurbe.prototype.NavBarMenuItem = $.extend({}, laurbe.BaseViewElement, {
 				scriptId : "navbarMenuItemTemplate",
 				url: '/html/components/navBar/navBarMenuItemTemplate.html'
 	},
+	/**
+	 * This Menu Item has a related View to show
+	 */
+	relatedView:null,
+	/**
+	 * 
+	 * @param {*} ev 
+	 */
 	onclickHandler: function(ev){
 		console.log('soy item y me han pulsado');
 		console.log(this);
