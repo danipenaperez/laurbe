@@ -13,6 +13,10 @@
      * History loading
      */
     history:[],
+    /**
+     * Related Main APP
+     */
+    relatedApp:null,
 	/**
 	* Initialization DAO Phase
 	**/
@@ -68,7 +72,7 @@
 	* Return the current viewId Url All args
 	**/
 	getCurrentViewAllArgs: function(){
-		return this._getURLArgs()[this.urlParamsMap.viewId];
+		return this._getURLArgs();
 	},
     /**
      * Store Navigation Info
@@ -81,11 +85,37 @@
 		args.viewId=viewId;
 		var view_args = this._toKeyValueQueryParams(args);
 		//1.Set the navigation params and add to history
-		var destinationURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+view_args;    
+		var destinationURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+view_args+'#viewId='+viewId;    
         //2.store local array
-        this.history.push(destinationURL);
+        this.history.push({viewId:viewId, args:args});
+        
+        window.location.hash=viewId;
         //3.Write to URL Navbar
         window.history.pushState({ path: destinationURL }, '', destinationURL);
+    },
+    onBackPressNavigation:function(){
+        //alert('vamos patras ');
+        var hist='';
+        for(i=0;i<this.history.length;i++){
+            hist=hist+this.history[i]+' \r ';
+        }
+
+        //alert(hist);
+        // console.log('y la app es');
+        // console.log(this.relatedApp);
+        
+        //alert('la ulrima vista es '+ last.viewId+ ' '+last.args);
+
+        if(this.history.length > 1 ){
+            var last = this.history[this.history.length - 2];
+            alert('estoy en '+ this.getCurrentViewId()+' y last es '+ last.viewId);
+
+            //if(JSON.stringify(last) == JSON.stringify())
+            //this.relatedApp._navigate(last.viewId, last.args);
+        }else{
+            alert('No tengo historial');
+        }
+          
     }
 	
 

@@ -30,6 +30,8 @@ Hacer 2 componeneste de card, un con iconos en la imagen y otro con los iconos f
 
 Hacer que el footer de las card sea un child_items y que se puedan añadir cosas (como iconos, de avisame o me gusta o etc..  y demas)
 
+El compartir solo deberia salir en el detalle de la sesion. (queda feo en el otro lado y nadie va a compartir sin haber visto el detalle, no tiene sentido)
+
 IMAGE WITH ICONS:
 Molaria hacer un componente imageWithIcons, que es un div con una imagen y un div dentro donde poner iconos sociales o lo que sea.
 Hay varios tipos de card, porque si mueves la image del card dentro del card-body debajo del titulo
@@ -81,8 +83,6 @@ El metodo destroy esta fenomenal, pero quizas hay que analizar si sale mejor hac
 FUNCIONALIDADES:
 ====================
 Hacer otra aplicacion en paralelo, como por ejemplo la de amistosos de deportes.
-
-
 
 Crear Usuario:
 A modo wizard.

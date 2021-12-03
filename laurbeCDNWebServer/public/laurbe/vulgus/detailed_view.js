@@ -141,6 +141,18 @@ var detailedView = new laurbe.ScrollableCardListView({
                                         src:'https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg'
                                     },
                                     text:'Ok, te aviso cuando cambie de opinion'
+                                }),
+                                new laurbe.Comment({
+                                    title:'Manolo',
+                                    img:{
+                                        src:'./images/icons/guitar/favicon.png'
+                                    },
+                                    text:' Pues mira que joya he encontrado',
+                                    items:[
+                                            new laurbe.YouTubeVideo({
+                                                src: 'https://www.youtube.com/embed/G2OepnvdDfY'
+                                            })
+                                    ]
                                 })
                             ]
                     })

@@ -444,7 +444,7 @@ vulgus_app = new laurbe.App({
 					new laurbe.NavBarBottomMenuItem({
 						items:[
 							new laurbe.Button({
-								text:'Explore',
+								// text:'Explore',
 								extraClass:'btn-block',
 								type:'secondary',
 								//span:{ text:'4'},
