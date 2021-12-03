@@ -21,11 +21,11 @@
             text: 'Join to Vulgus',
             url: viewURL
         };
-        if(navigator && navigator.canShare()){
+        //if(navigator && navigator.canShare()){
             navigator.share({ title: title, url: viewURL});
-        }else{
-            console.log('Current Device not support native WebShareAPI');
-        }    
+        // }else{
+        //     console.log('Current Device not support native WebShareAPI');
+        // }    
     },
     /**
      * Show specified Vendor Wasap
