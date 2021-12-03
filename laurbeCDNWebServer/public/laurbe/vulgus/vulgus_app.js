@@ -516,8 +516,6 @@ vulgus_app = new laurbe.App({
 								height:"32",
 								onclick: function(){
 									var currentURL = vulgus_app.navigatorManager.getCurrentViewCompleteURL();
-									alert('estoy en '+currentURL);
-								//vulgus_app.shareSocialManager.shareCurrentViewToAllAvailable("VulgusAPP te enrrolla colega", currentURL);
 									vulgus_app.shareSocialManager.shareCurrentViewToWassap(currentURL);
 								}
 							})
@@ -532,7 +530,6 @@ vulgus_app = new laurbe.App({
 								height:"32",
 								onclick: function(){
 									var currentURL = vulgus_app.navigatorManager.getCurrentViewCompleteURL();
-									alert('estoy en '+currentURL);
 									vulgus_app.shareSocialManager.shareCurrentViewToAllAvailable("VulgusAPP te enrrolla colega", currentURL);
 								}
 							})

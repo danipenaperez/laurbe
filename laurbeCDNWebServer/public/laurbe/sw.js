@@ -30,3 +30,8 @@ self.addEventListener('fetch', (e) => {
     caches.match(e.request).then((response) => response || fetch(e.request)),
   );
 });
+
+self.addEventListener('activate', async () => {
+  // This will be called only once when the service worker is activated.
+  console.log('service worker activate')
+})

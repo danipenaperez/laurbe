@@ -53,7 +53,7 @@ CSS:
 Sacar cada style de componente a un css distinto
 
 ServiceWorker:
-Enviar una notificacion push
+Enviar una notificacion push (https://medium.com/@a7ul/beginners-guide-to-web-push-notifications-using-service-workers-cb3474a17679)
 Guardar info en el storage o donde sea (por ejemplo comprobar si estamos logados)
 
 DAO:
@@ -72,6 +72,11 @@ scroll al ultimo elemento visitado (crear el laurbe.ScrollableLastFocusElement)
 
 BACKBUTTON:
 Controlar el back button del device https://stackoverflow.com/questions/25806608/how-to-detect-browser-back-button-event-cross-browser
+
+DESTROY VS HIDE VIEW:
+Las vistas tardan mucho en cargar y es porque se destruye el dom.
+El metodo destroy esta fenomenal, pero quizas hay que analizar si sale mejor hacer hiden
+
 
 FUNCIONALIDADES:
 ====================

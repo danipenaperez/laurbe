@@ -21,7 +21,7 @@
             text: 'Join to Vulgus',
             url: viewURL
         };
-        if(navigator.canShare()){
+        if(navigator && navigator.canShare()){
             navigator.share({ title: title, url: viewURL});
         }else{
             console.log('Current Device not support native WebShareAPI');
@@ -32,7 +32,6 @@
      * @returns 
      */
      shareCurrentViewToWassap:function(viewURL){
-        alert("es mobile "+laurbe.utils.isMobile());
         if(laurbe.utils.isMobile()){ //Native Mobile Device
             document.location.href = "whatsapp://send?text="+viewURL;
         }else{ //Web APP api
