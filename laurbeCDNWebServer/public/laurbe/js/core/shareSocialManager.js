@@ -22,7 +22,7 @@
             url: viewURL
         };
         //if(navigator && navigator.canShare()){
-            navigator.share({ title: title, url: viewURL});
+            navigator.share(shareData);
         // }else{
         //     console.log('Current Device not support native WebShareAPI');
         // }    
