@@ -40,19 +40,15 @@ Hay varios tipos de card, porque si mueves la image del card dentro del card-bod
 queda mas bonito. Incluso quitando la imagen queda muy bonito tambien.
 
 TOP MENU:
-EL logon del musicArena, hay que hacer algo o imagen o cambiar la tipografia.
-Los css no son recomendables, mejor meter un backfround repeat.
+-Hacer que el logo "desaparezca" en modo fade cuando se de hacia arriba
+-Los menus no se estan quedando como Active si se navega a traves de "Navigator"
 
-BOTTOM MENU:
-Hacer que el footer general sea un child_items y se puedan añadir botones. EL primer boton el de + para crear una session.
-Dividir la barra en los elementos que se vayan a tener. ahora estan en el centro apelotonados
 
 UPLOAD: 
 Por ejemplo para añadir una imagen de perfil o una imagen para la sesion se necesita un upload de ficheros (https://syntaxxx.com/accessing-user-device-photos-with-the-html5-camera-api/)
 
-NAVIGATOR:
-Hacer que cuando se cambie de menu, se añada #nombreVista?parametro1=val1&param2=val2 a la url
-de forma que en el onload de la view, se pueda saber con que parametros se ha llamado a esa vista
+BOTON INSTALL:
+Lo he perdido, antes funcionaba
 
 MINIFY:
 Volver a generar el minify y probarlo
@@ -65,7 +61,11 @@ Enviar una notificacion push
 Guardar info en el storage o donde sea (por ejemplo comprobar si estamos logados)
 
 DAO:
-HAcer los daos mas comunes
+HAcer los daos mas comunes. 
+
+SEGURIDAD:
+Hay unas pantallas definidas para 403, 404 y no se que mas. Quizas estaria bien usarlas capturando eventos
+de aplicacion (por ejemlpo no autenticado o 404 o lo que sea).
 
 INDEXEDDB:
 Mirar el tutorial https://es.javascript.info/indexeddb
@@ -78,8 +78,7 @@ FUNCIONALIDADES:
 ====================
 Hacer otra aplicacion en paralelo, como por ejemplo la de amistosos de deportes.
 
-Navegacion Dummy:
-Hacer mas archivos js con la info del detalle de la session y que se pinte la que toque para que de sensacion mas real, ya que siempre vmaos al andjustice
+
 
 Crear Usuario:
 A modo wizard.
@@ -124,3 +123,26 @@ Seguro que hay grupos que quieren, o por ejemplo cantanes solistas, tocar con el
 Lo mismo para el Amistosos, hacer que estrellas venidas a menos (locales), participen en un partido determinado.
 Todos los que juegan pagan 15 euros cada uno (como si fuera una entrada a un evento) y el invitado se lleva dinero.
 Lo mismo para equipos con categoria auqneu no sean conocidos, si te quieres medir a ellos pagas.
+
+
+
+===============
+HECHO
+==============
+Componentes
+-----------
+NAVIGATOR:
+Hacer que cuando se cambie de menu, se añada #nombreVista?parametro1=val1&param2=val2 a la url
+de forma que en el onload de la view, se pueda saber con que parametros se ha llamado a esa vista
+
+BOTTOM MENU:
+Hacer que el footer general sea un child_items y se puedan añadir botones. EL primer boton el de + para crear una session.
+Dividir la barra en los elementos que se vayan a tener. ahora estan en el centro apelotonados
+
+TOP MENU:
+-EL logon del musicArena, hay que hacer algo o imagen o cambiar la tipografia. Los css no son recomendables, mejor meter un backfround repeat.
+
+Funcionalidad
+--------------
+Navegacion Dummy:
+Hacer mas archivos js con la info del detalle de la session y que se pinte la que toque para que de sensacion mas real, ya que siempre vmaos al andjustice

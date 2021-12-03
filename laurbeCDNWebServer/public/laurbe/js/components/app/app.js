@@ -122,9 +122,13 @@ laurbe.prototype.App = $.extend({}, laurbe.prototype.BaseAPP, {
 			this.dao=instanceProperties.dao;
 		if(instanceProperties.storageManager)
 			this.storageManager=instanceProperties.storageManager;
+
+		//Always exists on laurbe app, but could be overwrite in app definition
 		if(!instanceProperties.navigatorManager)
 			this.navigatorManager = new laurbe.NavigatorManager({});
-		
+		//Always exists on laurbe app, but could be overwrite in app definition
+		if(!instanceProperties.shareSocialManager)
+			this.shareSocialManager = new laurbe.ShareSocialManager({});	
 	},	
 	/**
 	* Render the base html structure based on template

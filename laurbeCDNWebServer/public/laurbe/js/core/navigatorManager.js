@@ -58,6 +58,13 @@
 		return this._getURLArgs()[paramName];
 	},
     /**
+     * 
+     * @returns Returns the whole URL for the current View
+     */
+    getCurrentViewCompleteURL: function(){
+        return window.location.href;
+    },
+    /**
 	* Return the current viewId Url All args
 	**/
 	getCurrentViewAllArgs: function(){

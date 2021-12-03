@@ -506,6 +506,22 @@ vulgus_app = new laurbe.App({
 								}
 							})
 						]
+					}),
+					new laurbe.NavBarBottomMenuItem({
+						items:[
+							new laurbe.Image({
+								img_src: 'https://www.idalsys.com/wp-content/uploads/2019/03/whatsapp-icon-273x300.png',
+								alt:'tom cruise',
+								width:"32",
+								height:"32",
+								onclick: function(){
+									var currentURL = vulgus_app.navigatorManager.getCurrentViewCompleteURL();
+									alert('estoy en '+currentURL);
+								//vulgus_app.shareSocialManager.shareCurrentViewToAllAvailable("VulgusAPP te enrrolla colega", currentURL);
+									vulgus_app.shareSocialManager.shareCurrentViewToWassap(currentURL);
+								}
+							})
+						]
 					})
 					
 
