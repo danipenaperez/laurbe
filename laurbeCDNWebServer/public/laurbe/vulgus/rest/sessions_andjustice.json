@@ -93,6 +93,23 @@
                         
                     }
                 ]
+            },
+            {
+                "user": {
+                    "name": "Daniel",
+                    "img":"https://yt3.ggpht.com/-tO_SdVYSVg8/AAAAAAAAAAI/AAAAAAAAAAA/t089mcHnzD0/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg"
+                },
+                "content": [
+                    {
+                        "type": "text",
+                        "value": "Pues mira que joya acabo de encontrar"
+                        
+                    },
+                    {
+                        "type": "youTubeVideo",
+                        "src": "https://www.youtube.com/embed/G2OepnvdDfY"
+                    }
+                ]
             }
         ]
 }

@@ -101,5 +101,12 @@
         "description": "Buscamos equipo nivel amateur para pachanga el finde del 23 de diciembre",
         "tags":["Metal", "Metallica"],
         "img": "https://thumbs.gfycat.com/CleanConfusedCrownofthornsstarfish-size_restricted.gif"
+    },
+    {
+        "title":"Flamenco Sessions",
+        "id_session": "flamenco_sessions",
+        "description": "A Buleirar un poco",
+        "tags":["Flamenco", "Metallica"],
+        "img": "http://www.sgae.es/ImagenesSGAE/2020/Musica/Noticias/Flamenco_Latin_Grammy_SGAE_2020.jpg"
     }
 ]

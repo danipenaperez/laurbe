@@ -79,10 +79,29 @@ DESTROY VS HIDE VIEW:
 Las vistas tardan mucho en cargar y es porque se destruye el dom.
 El metodo destroy esta fenomenal, pero quizas hay que analizar si sale mejor hacer hiden
 
+SERVIDOR
+============
+-Hacer los RQObjects y los RSObjects y rellenarlos con JsonPatch de forma que no hay fuga de informacion
+-Hacer el envio de emails a partir de una carpeta "statics" que tenga la imagenes 
+
+
 
 FUNCIONALIDADES:
 ====================
 Hacer otra aplicacion en paralelo, como por ejemplo la de amistosos de deportes.
+
+Login:
+- Crear componente Login en la parte Web
+- Implementar el followRedirect en el front (hacerlo por javascript o vale directamente el baile del navegador?)
+- Asociar link social Google con el backend (dar de alta las urls por entorno y hacerlo parametrizable)
+- Dar de alta el usuario en DynamoDB
+- Usar Setp Functions para el flujo de nuevo usuario
+   -- Enviar Correo electronico
+   -- ¿Alguna otra operacion?  
+- Devolver la url de redirect
+- ¿Quitamos lo de usuario y contraseña y que sea solo login social? .... (quizas no, pero el usuario debe ser un mail por cojones);
+- Login con Facebook (https://medium.com/authpack/facebook-auth-with-node-js-c4bb90d03fc0)
+- Login con Github (https://medium.com/authpack/easy-github-auth-with-node-js-502d3d8f8e62)
 
 Crear Usuario:
 A modo wizard.
@@ -99,8 +118,7 @@ Boton "Join the session", en el detalle:
 Mostrar los iconos de los que ya estan apuntados
 Hacer un dialog, para que se pueda meter comentarios en el detalle de la session
 
-Login:
-¿Quitamos lo de usuario y contraseña y que sea solo login social? .... (quizas no, pero el usuario debe ser un mail por cojones);
+
 
 
 
